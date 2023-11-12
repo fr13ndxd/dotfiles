@@ -1,0 +1,13 @@
+{
+    "pyprland": {
+        "plugins": [
+            "scratchpads"
+        ]
+    },
+    "scratchpads": {
+        "term": {
+            "command": "wezterm",
+            "margin": 50
+        }
+    }
+}

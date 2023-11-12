@@ -20,6 +20,7 @@ in
     ./shell.nix
     ./gtk.nix
     ./home-files.nix
+    ./hyprland.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
