@@ -10,7 +10,8 @@
     comment = "Edit text files";
     icon = "nvim";
     # xterm is a symlink and not actually xterm
-    exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
+    # exec = "xterm -e ${pkgs.neovim}/bin/nvim %F";
+    exec = "wezterm start --always-new-process ${pkgs.neovim}/bin/nvim";
     categories = [ "TerminalEmulator" ];
     terminal = false;
     mimeType = [ "text/plain" ];

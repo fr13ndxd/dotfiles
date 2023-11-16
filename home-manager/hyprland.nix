@@ -99,7 +99,7 @@ in
             (f "xdg-desktop-portal")
             (f "xdg-desktop-portal-gnome")
             (f "transmission-gtk")
-            "opacity 0.8 override 0.8 override,^(org.wezfurlong.wezterm)$"
+           # "opacity 0.8 override 0.8 override,^(org.wezfurlong.wezterm)$"
         ];
 
         bind = let
@@ -160,4 +160,4 @@ in
         ];
     };
   };
-}
+} 

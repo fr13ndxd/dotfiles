@@ -45,7 +45,6 @@
   # Enable the GNOME Desktop Environment.
    services.xserver.displayManager.gdm = {
     enable = true;
-    autoEnable = false;
   };
   # services.xserver.desktopManager.gnome.enable = true;
 
@@ -75,6 +74,8 @@
     pulse.enable = true;
   };
 
+  services.flatpak.enable = true;
+
   users.users.fr13nd = {
     isNormalUser = true;
     description = "fr13nd";
@@ -91,6 +92,7 @@
     git
     gcc
     clang
+    fzf
     zig
   ];
 

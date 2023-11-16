@@ -1,6 +1,8 @@
+import App from 'resource:///com/github/Aylur/ags/app.js';
+import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import options from '../options.js';
-import { App, Widget } from '../imports.js';
 
+/** @param {string} windowName */
 const Padding = windowName => Widget.EventBox({
     class_name: 'padding',
     hexpand: true,
@@ -8,12 +10,17 @@ const Padding = windowName => Widget.EventBox({
     connections: [['button-press-event', () => App.toggleWindow(windowName)]],
 });
 
+/**
+ * @param {string} windowName
+ * @param {import('types/widgets/revealer').RevealerProps['transition']} transition
+ * @param {import('types/widgets/box').default} child
+ */
 const PopupRevealer = (windowName, transition, child) => Widget.Box({
     css: 'padding: 1px;',
     child: Widget.Revealer({
         transition,
         child,
-        transitionDuration: options.windowAnimationDuration,
+        transitionDuration: options.transition.value,
         connections: [[App, (revealer, name, visible) => {
             if (name === windowName)
                 revealer.reveal_child = visible;
@@ -66,6 +73,16 @@ const layouts = {
     }),
 };
 
+
+/**
+ * @typedef {Object} PopopWindowProps
+ * @property {import('types/widgets/box').default} content
+ * @property {'center' | 'top' | 'top right'=} layout
+ * @property {boolean=} expand
+ * @property {string} name
+ */
+
+/** @param {import('types/widgets/window').WindowProps & PopopWindowProps} o */
 export default ({
     layout = 'center',
     expand = true,
@@ -73,10 +90,14 @@ export default ({
     content,
     ...rest
 }) => Widget.Window({
+    class_names: ['popup-window', name],
     name,
-    child: layouts[layout](name, content, expand),
     popup: true,
     visible: false,
     focusable: true,
+    setup(self) {
+        content.toggleClassName('window-content');
+        self.child = layouts[layout](name, content, expand);
+    },
     ...rest,
 });

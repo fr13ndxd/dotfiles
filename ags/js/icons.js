@@ -5,7 +5,9 @@ export default {
     audio: {
         mic: {
             muted: 'microphone-disabled-symbolic',
-            unmuted: 'microphone-sensitivity-high-symbolic',
+            low: 'microphone-sensitivity-low-symbolic',
+            medium: 'microphone-sensitivity-medium-symbolic',
+            high: 'microphone-sensitivity-high-symbolic',
         },
         volume: {
             muted: 'audio-volume-muted-symbolic',
@@ -85,10 +87,10 @@ export default {
     },
     ui: {
         arrow: {
-            right: 'go-next-symbolic',
-            left: 'go-previous-symbolic',
-            down: 'go-down-symbolic',
-            up: 'go-up-symbolic',
+            right: 'pan-end-symbolic',
+            left: 'pan-start-symbolic',
+            down: 'pan-down-symbolic',
+            up: 'pan-up-symbolic',
         },
     },
     system: {

@@ -10,15 +10,14 @@
 
  # tools
  bat eza ranger fd fzf socat jq acpi inotify-tools
- ffmpeg libnotify killall zip unzip glib
+ ffmpeg libnotify killall zip unzip glib htop
 
  # langs
  nodejs go bun sassc typescript meson ninja eslint
 
  # other
  gnumake cmake
-
- grapejuice
+vimPlugins.telescope-fzf-native-nvim
 
   ];
 }
