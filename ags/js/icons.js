@@ -1,6 +1,4 @@
 export default {
-    settings: 'emblem-system-symbolic',
-    tick: 'object-select-symbolic',
     lock: 'system-lock-screen-symbolic',
     audio: {
         mic: {
@@ -86,16 +84,34 @@ export default {
         next: '󰒭',
     },
     ui: {
+        close: 'window-close-symbolic',
+        info: 'info-symbolic',
+        menu: 'open-menu-symbolic',
+        link: 'external-link-symbolic',
+        settings: 'emblem-system-symbolic',
+        tick: 'object-select-symbolic',
         arrow: {
-            right: 'pan-end-symbolic',
-            left: 'pan-start-symbolic',
-            down: 'pan-down-symbolic',
-            up: 'pan-up-symbolic',
+            right: 'right-symbolic',
+            left: 'left-symbolic',
+            down: 'down-symbolic',
+            up: 'up-symbolic',
         },
     },
     system: {
         cpu: 'org.gnome.SystemMonitor-symbolic',
         ram: 'drive-harddisk-solidstate-symbolic',
         temp: 'temperature-symbolic',
+    },
+    dialog: {
+        Search: '',
+        Applauncher: '󰵆',
+        Bar: '',
+        Border: '󰃇',
+        Color: '󰏘',
+        Desktop: '',
+        Font: '',
+        General: '󰒓',
+        Miscellaneous: '󰠱',
+        Theme: '󰃟',
     },
 };

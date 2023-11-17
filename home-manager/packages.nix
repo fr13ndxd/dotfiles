@@ -17,7 +17,7 @@
 
  # other
  gnumake cmake
-vimPlugins.telescope-fzf-native-nvim
+vimPlugins.telescope-fzf-native-nvim icon-library
 
   ];
 }

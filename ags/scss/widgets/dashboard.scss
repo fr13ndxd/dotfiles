@@ -29,7 +29,7 @@
         &:indeterminate {
             color: transparentize($fg-color, 0.9);
         }
-        font-size: 0.8em;
+        font-size: 1.1em;
         padding: .2em;
     }
 }
@@ -38,7 +38,7 @@ window#dashboard .window-content {
     @include floating-widget;
 
     .notifications {
-        min-width: $notifications-width/1.1;
+        min-width: $notifications-width;
 
         .header {
             margin-bottom: $spacing;
@@ -71,8 +71,8 @@ window#dashboard .window-content {
         }
 
         .placeholder {
-            image {  font-size: 5em; margin-bottom: 10px }
-            label {  font-size: 0.9em; }
+            image {  font-size: 7em; }
+            label {  font-size: 1.2em; }
         }
     }
 
@@ -88,17 +88,14 @@ window#dashboard .window-content {
     }
 
     .clock-box {
-        padding: $padding/3;
+        padding: $padding;
 
         .clock {
-            font-size: 50px;
-            font-weight: 700;
+            font-size: 5em;
         }
 
         .uptime {
-            margin-top: -10px;
             color: transparentize($fg-color, 0.2);
-            font-size: 13px;
         }
     }
 
@@ -111,8 +108,8 @@ window#dashboard .window-content {
         padding: $padding;
 
         .circular-progress {
-            min-height: $sys-info-size/1.5;
-            min-width: $sys-info-size/1.5;
+            min-height: $sys-info-size;
+            min-width: $sys-info-size;
             margin: $padding/2;
             font-size: $padding;
             background-color: $bg-color;

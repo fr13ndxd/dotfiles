@@ -69,8 +69,6 @@ const Center = () => Widget.Box({
 const End = () => Widget.Box({
     class_name: 'end',
     children: [
-        // SeparatorDot(Mpris, m => m.players.length > 0),
-        // MediaIndicator(),
         Widget.Box({ hexpand: true }),
 
         SubMenu({
@@ -85,6 +83,7 @@ const End = () => Widget.Box({
         ScreenRecord(),
         SeparatorDot(Recorder, r => r.recording),
         SystemIndicators(),
+        SeparatorDot(),
         DateButton(),
         SeparatorDot(),
         PowerMenu(),
@@ -95,7 +94,7 @@ const End = () => Widget.Box({
 export default monitor => Widget.Window({
     name: `bar${monitor}`,
     class_name: 'transparent',
-    exclusive: true,
+    exclusivity: 'exclusive',
     monitor,
     binds: [['anchor', options.bar.position, 'value', pos => ([
         pos, 'left', 'right',

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,... }:
 
 let 
    nerdfonts = (pkgs.nerdfonts.override { fonts = [
@@ -9,6 +9,14 @@ let
    "FiraCode"
    "Mononoki"
    ]; });
+  moreWaita = pkgs.stdenv.mkDerivation {
+    name = "MoreWaita";
+    src = inputs.more-waita;
+    installPhase = ''
+        mkdir -p $out/share/icons
+        mv * $out/share/icons
+    '';
+  };
 in
 {
   home.username = "fr13nd";
@@ -40,6 +48,7 @@ in
   home.packages = with pkgs; [
     telegram-desktop
     neovim
+    moreWaita
 
     (pkgs.discord.override {
         withOpenASAR = true;

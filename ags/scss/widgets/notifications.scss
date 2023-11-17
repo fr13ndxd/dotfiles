@@ -12,17 +12,15 @@
         .title {
             margin-right: $spacing;
             color: $fg-color;
-            font-size: 0.9em;
+            font-size: 1.1em;
         }
 
         .time {
             color: transparentize($fg-color, .2);
-            font-size: 13px;
-            //margin-top: 2px;
         }
 
         .description {
-            font-size: .8em;
+            font-size: .9em;
             color: transparentize($fg-color, .2);
         }
 
@@ -43,8 +41,8 @@
         button {
             @include button;
             border-radius: $radii*0.8;
-            font-size: 0.8em;
-            padding: $padding * 0.4;
+            font-size: 1.2em;
+            padding: $padding * 0.7;
         }
     }
 
@@ -52,8 +50,8 @@
         @include button($flat: true);
         margin-left: $spacing / 2;
         border-radius: $radii*0.8;
-        min-width: 1em;
-        min-height: 1em;
+        min-width: 1.2em;
+        min-height: 1.2em;
 
         &:hover {
             background-color: transparentize($red, .5);

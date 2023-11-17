@@ -97,16 +97,16 @@ const BatteryIndicator = Widget.Box({
             items: [
                 ['true', Widget.Icon({ binds: [['icon', Battery, 'icon-name']] })],
                 ['false', Widget.Icon({ binds: [['icon', Battery, 'icon-name']] })],
-                //['false', Widget.Icon({ binds: [['icon', Battery, 'icon-name']] })],
-                //['true', FontIcon({ icon: icons.battery.charging })],
             ],
             connections: [[Battery, stack => {
                 stack.shown = `${Battery.charging || Battery.charged}`;
             }],
             [Battery, w => {
                 w.toggleClassName('charging', Battery.charging || Battery.charged);
-                w.toggleClassName('medium', Battery.percent < options.battaryBar.medium);
-                w.toggleClassName('low', Battery.percent < options.battaryBar.low);
+                w.toggleClassName('medium', Battery.percent < options.battery.medium.value);
+                w.toggleClassName('low', Battery.percent < options.battery.low.value);
+                w.toggleClassName('half', Battery.percent < 48);
+
             }]
             ],
         }),

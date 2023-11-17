@@ -5,16 +5,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1699571683,
-        "narHash": "sha256-3KxKTB1CJJ4x1hcpSygK2jAcr93C+PXN8V4MSX5jQ7Q=",
+        "lastModified": 1700139529,
+        "narHash": "sha256-q378ba0Ulprd0lC5sroeCSB1mZOHPL7ubKWgLW3o5pY=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "75edd513b1f7ef08c9c1134acba73d965facc1dc",
+        "rev": "b47fa9d26b5dcfd02386badf26a54abf1e71310f",
         "type": "github"
       },
       "original": {
         "owner": "Aylur",
-        "ref": "main",
         "repo": "ags",
         "type": "github"
       }
@@ -26,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699663185,
-        "narHash": "sha256-hI3CZPINBWstkMN+ptyzWibw5eRtFCiEvO7zR61bGBs=",
+        "lastModified": 1700087144,
+        "narHash": "sha256-LJP1RW0hKNWmv2yRhnjkUptMXInKpn/rV6V6ofuZkHU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "691cbcc03af6ad1b5384c0e0e0b5f2298f58c5ce",
+        "rev": "ab1459a1fb646c40419c732d05ec0bf2416d4506",
         "type": "github"
       },
       "original": {
@@ -49,11 +48,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1699726486,
-        "narHash": "sha256-8PP26+ybmScq5WpFd2JPqUDzG2VggYOvD6/rzY9/CJ4=",
+        "lastModified": 1700155912,
+        "narHash": "sha256-aBtEaAlvMsCztAD5lcKgV/dBo/fVEyI6Hx+zX/dIpTY=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "9afdd61adeaf413afbe853dbc5fdf6853c8bde21",
+        "rev": "4868d4dfd3dca053915ddc3ec6444e7e96ebd8c6",
         "type": "github"
       },
       "original": {
@@ -85,6 +84,19 @@
         "owner": "hyprwm",
         "repo": "hyprland-protocols",
         "type": "github"
+      }
+    },
+    "more-waita": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697582379,
+        "narHash": "sha256-lf9nLA7AH14E/ruYGlklh44OkAZeg86B7+evttDxCNA=",
+        "type": "tarball",
+        "url": "https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip"
       }
     },
     "nixpkgs": {
@@ -121,11 +133,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1699099776,
-        "narHash": "sha256-X09iKJ27mGsGambGfkKzqvw5esP1L/Rf8H3u3fCqIiU=",
+        "lastModified": 1699963925,
+        "narHash": "sha256-LE7OV/SwkIBsCpAlIPiFhch/J+jBDGEZjNfdnzCnCrY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "85f1ba3e51676fa8cc604a3d863d729026a6b8eb",
+        "rev": "bf744fe90419885eefced41b3e5ae442d732712d",
         "type": "github"
       },
       "original": {
@@ -139,6 +151,7 @@
         "ags": "ags",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "more-waita": "more-waita",
         "nixpkgs": "nixpkgs_3"
       }
     },
