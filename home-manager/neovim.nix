@@ -33,6 +33,8 @@
       unzip
       wget
       curl
+      clang
+      clangd
       tree-sitter
       luajitPackages.luarocks
       python311Packages.pynvim

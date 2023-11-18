@@ -95,6 +95,8 @@
     clang
     fzf
     zig
+    ###
+    go cargo unzip
   ];
 
   system.stateVersion = "23.11"; 
