@@ -1,0 +1,77 @@
+-- lazy.lang
+-- clangd, go, json, markdown, python, rust, typescript, yaml
+
+return {
+    {
+        "williamboman/mason.nvim",
+        enabled = io.open("/run/.containerenv", "r") ~= nil,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            { "nushell/tree-sitter-nu" },
+        },
+        opts = {
+            ensure_installed = {
+                "lua",
+                "nix",
+
+                -- "bash",
+                -- "nu",
+                --
+                -- "javascript",
+                -- "jsdoc",
+                -- "html",
+                -- "scss",
+                -- "css",
+                -- "svelte",
+                --
+                -- "luadoc",
+                -- "luap",
+                -- "query",
+                -- "regex",
+                -- "vim",
+                -- "vimdoc",
+                --
+                -- "gleam"
+            },
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                nil_ls = {},
+                lua_ls = {},
+
+                bashls = {},
+                nushell = {},
+
+                cssls = {},
+                eslint = {},
+                stylelint_lsp = {},
+                html = {},
+
+                svelte = {},
+                astro = {},
+                denols = {},
+                gleam = {},
+
+                tsserver = {
+                    root_dir = require("lspconfig").util.root_pattern("package.json"),
+                },
+
+                vala_ls = {},
+                mesonlsp = {},
+            },
+        },
+    },
+    {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                vala = { "clang-format" },
+            },
+        }
+    },
+}

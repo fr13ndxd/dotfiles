@@ -6,7 +6,7 @@
 
     # hyprland.url = "github:hyprwm/Hyprland";
     # fix hyprland build error:
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1&ref=xwayland-rewrite";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; #&ref=xwayland-rewrite";
     
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins?submodules=1";
