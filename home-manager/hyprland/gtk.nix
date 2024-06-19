@@ -1,7 +1,7 @@
 { pkgs, ...}:
 let
   homeDirectory = "/home/fr13nd";
-in 
+in
 {
   gtk = {
     enable = true;
@@ -26,6 +26,7 @@ in
     "file://${homeDirectory}/Music"
     "file://${homeDirectory}/Pictures"
     "file://${homeDirectory}/Videos"
+    "file://${homeDirectory}/Desktop"
     "file://${homeDirectory}/Downloads"
     "file://${homeDirectory}/.config Config"
     "file://${homeDirectory}/.local/share Local"
@@ -35,5 +36,5 @@ in
       name = "Catppuccin-Mocha-Dark-Cursors";
       package = pkgs.catppuccin-cursors.mochaDark;
       size = 16;
-    }; 
+    };
 }

@@ -4,9 +4,12 @@ import nix from "service/nix"
 
 const { icon, label, action } = options.bar.launcher
 
+//print(icon.icon)
+
 function Spinner() {
     const child = Widget.Icon({
         icon: icon.icon.bind(),
+        //icon: "nix-snowflake",
         class_name: Utils.merge([
             icon.colored.bind(),
             nix.bind("ready"),

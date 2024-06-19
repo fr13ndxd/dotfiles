@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ 
+    [
         /etc/nixos/hardware-configuration.nix
 
         ./bootloader.nix
@@ -99,6 +99,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      brave
       spotify gnomeExtensions.mute-spotify-ads
     #  thunderbird
     ];

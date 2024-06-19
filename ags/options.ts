@@ -92,7 +92,8 @@ const options = mkOptions(OPTIONS, {
         launcher: {
             icon: {
                 colored: opt(true),
-                icon: opt(icon(distro.logo, icons.ui.search)),
+                //icon: opt(icon(distro.logo, icons.ui.search)),
+                icon: opt("nix-snowflake"),
             },
             label: {
                 colored: opt(false),

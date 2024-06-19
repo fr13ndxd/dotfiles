@@ -17,6 +17,6 @@
  gnumake cmake session-desktop hyperfine steam
  vimPlugins.telescope-fzf-native-nvim icon-library
 
- wayland-scanner wl-clipboard
+ wayland-scanner wl-clipboard hyprshot
   ];
 }

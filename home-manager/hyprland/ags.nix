@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }:
 {
-  imports = [ 
+  imports = [
     inputs.ags.homeManagerModules.default
     # inputs.astal.homeManagerModules.default
   ];
@@ -22,6 +22,7 @@
     pavucontrol
     networkmanager
     gtk3
+    hyprshot
   ];
 
   # programs.astal = {

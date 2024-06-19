@@ -15,7 +15,7 @@ export const substitutes = {
 export default {
     missing: "image-missing-symbolic",
     nix: {
-        nix: "nix-snowflake-symbolic",
+        nix: "nix-snowflake",
     },
     app: {
         terminal: "terminal-symbolic",
