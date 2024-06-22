@@ -12,7 +12,6 @@ const DELAY = 2500
 function OnScreenProgress(vertical: boolean) {
     const indicator = Widget.Icon({
         size: 42,
-        class_name: "indicator",
         vpack: "start",
     })
     const progress = Progress({
@@ -23,8 +22,7 @@ function OnScreenProgress(vertical: boolean) {
     })
 
     const revealer = Widget.Revealer({
-        transition: "slide_up",
-        //child: Widget.Box({children:[indicator, progress]}),
+        transition: "slide_left",
         child: progress,
     })
 

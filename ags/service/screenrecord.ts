@@ -65,21 +65,18 @@ class Recorder extends Service {
         if (!dependencies("slurp", "wayshot"))
             return
 
-        const dir = `${this.#screenshots}/`
         const file = `${this.#screenshots}/${now()}.png`
         Utils.ensureDirectory(this.#screenshots)
 
         if (full) {
-            // await sh(`wayshot -f ${file}`)
-            await sh(`hyprshot -m output -o ${dir} -f ${now()}.png -z`)
+            await sh(`wayshot -f ${file}`)
         }
         else {
-            /*const size = await sh("slurp")
+            const size = await sh("slurp")
             if (!size)
-            return*/
+                return
 
-            // await sh(`wayshot -f ${file} -s "${size}"`)
-            await sh(`hyprshot -m region -o ${dir} -f ${now()}.png -z`)
+            await sh(`wayshot -f ${file} -s "${size}"`)
         }
 
         bash(`wl-copy < ${file}`)

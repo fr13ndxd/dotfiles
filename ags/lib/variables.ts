@@ -19,8 +19,6 @@ export const distro = {
     logo: GLib.get_os_info("LOGO"),
 }
 
-print(distro.logo)
-
 // const divide = ([total, free]: string[]) => Number.parseInt(free) / Number.parseInt(total)
 //
 // export const cpu = Variable(0, {

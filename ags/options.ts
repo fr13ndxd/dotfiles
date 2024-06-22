@@ -65,7 +65,7 @@ const options = mkOptions(OPTIONS, {
     bar: {
         flatButtons: opt(true),
         position: opt<"top" | "bottom">("top"),
-        corners: opt(true),
+        corners: opt(50),
         transparent: opt(false),
         layout: {
             start: opt<Array<import("widget/bar/Bar").BarWidget>>([
@@ -92,8 +92,7 @@ const options = mkOptions(OPTIONS, {
         launcher: {
             icon: {
                 colored: opt(true),
-                //icon: opt(icon(distro.logo, icons.ui.search)),
-                icon: opt("nix-snowflake"),
+                icon: opt(icon(distro.logo, icons.ui.search)),
             },
             label: {
                 colored: opt(false),

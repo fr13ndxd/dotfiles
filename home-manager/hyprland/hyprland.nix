@@ -18,14 +18,26 @@ in
         # ];
 
         settings = {
+          #env = [
+          #  "XCURSOR_THEME,catppuccin-mocha-dark"
+          #  "XCURSOR_SIZE,24"
+          #  "HYPRCURSOR_THEME,catppuccin-mocha-dark"
+          #  "HYPRCURSOR_SIZE,36"
+          #];
+
           exec-once = [
             "ags -b hypr"
             # "wl-clipboard-history -t"
+            # "gsettings set $gnome-schema cursor-theme 'Catppuccin-Mocha-Dark-Cursors'"
           ];
 
         monitor = [
           "eDP-1, 1920x1080@500, 0x0, 1"
         ];
+
+        cursor = {
+          no_hardware_cursors = true;
+        };
 
         general = {
           layout = "dwindle";
@@ -37,7 +49,7 @@ in
         decoration = {
           rounding = 11;
           active_opacity = 1;
-          inactive_opacity = 0.8;
+          inactive_opacity = 1;
           drop_shadow = "yes";
           shadow_range = 8;
           shadow_render_power = 2;

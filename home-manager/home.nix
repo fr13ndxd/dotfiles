@@ -58,10 +58,18 @@ in
     # neovim
   #  moreWaita
 
-    (pkgs.discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
+   (pkgs.discord.override {
+  withOpenASAR = true;
+  withVencord = true;
+  vencord = pkgs.vencord.overrideAttrs {
+    src = pkgs.fetchFromGitHub {
+      owner = "Vendicated";
+      repo = "Vencord";
+      rev = "d19b0aeb5be368689c0e81de3a1c014326146840";
+      hash = "sha256-krIXQiAmiXrqrGHeBzc0rKvp/OaT1W7xTyWqt0NUHMU=";
+    };
+  };
+})
 
     # other
     nerdfonts

@@ -18,7 +18,7 @@ export default ({
 }: ProgressProps) => {
     const fill = Widget.Box({
         class_name: "fill",
-        hexpand: !vertical,
+        hexpand: vertical,
         vexpand: !vertical,
         hpack: vertical ? "fill" : "start",
         vpack: vertical ? "end" : "fill",
