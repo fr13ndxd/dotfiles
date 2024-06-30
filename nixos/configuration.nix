@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, config, asztal, ... }:
+{ inputs, pkgs, config, asztal, lib, ... }:
 
 {
   imports =
@@ -13,7 +13,7 @@
         ./hyprland.nix
     ];
 
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   services.ollama = {
     enable = true;
@@ -103,6 +103,11 @@
       firefox
       brave
       spotify gnomeExtensions.mute-spotify-ads
+      gnome-extension-manager
+
+      (zed-editor.overrideAttrs {
+        version = "0.141.3";
+      })
     #  thunderbird
     ];
   };
@@ -113,13 +118,14 @@
   programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; with gnome; [
-    nautilus jetbrains.rust-rover
+    nautilus
     gcc
     clang
     cargo rustfmt rustup rustc pkg-config
     openssl openssl.dev
     dotnet-sdk_8
-    accountsservice ];
+    accountsservice
+    ];
 
   security = {
     polkit.enable = true;

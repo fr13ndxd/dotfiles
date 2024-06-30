@@ -9,16 +9,31 @@ let
    "FiraCode"
    "Mononoki"
    ]; });
+
+   font = {
+     name = "Ubuntu Nerd Font";
+     package = nerdfonts;
+     size = 9;
+   };
+
+   iconTheme = {
+     name = "MoreWaita";
+     package = pkgs.morewaita-icon-theme;
+   };
 in
 {
   home.username = "fr13nd";
   home.homeDirectory = "/home/fr13nd";
 
+
   imports = [
-     # hyprland
-      ./hyprland/hyprland.nix
-      ./hyprland/ags.nix
-      ./hyprland/gtk.nix
+    # window managers
+       # hyprland
+       ./window-managers/hyprland/hyprland.nix
+       ./window-managers/hyprland/ags.nix
+       ./window-managers/hyprland/gtk.nix
+       # gnome
+       ./window-managers/gnome/gnome.nix
 
     # shell
       ./shell/shell.nix
@@ -53,8 +68,13 @@ in
     };
   };
 
+  gtk = {
+    inherit font;
+  };
+
   home.packages = with pkgs; [
     telegram-desktop
+    gnome.gnome-tweaks
     # neovim
   #  moreWaita
 

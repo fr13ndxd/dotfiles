@@ -88,7 +88,12 @@ export function launchApp(app: Application) {
         .filter(str => !str.startsWith("%") && !str.startsWith("@"))
         .join(" ")
 
-    bash(`${exe} &`)
+    if (exe == "zed") {
+        bash(`WAYLAND_DISPLAY='' ${exe} &`)
+    } else {
+        bash(`${exe} &`)
+    }
+    
     app.frequency += 1
 }
 

@@ -15,6 +15,7 @@ import { forMonitors } from "lib/utils"
 import { setupQuickSettings } from "widget/quicksettings/QuickSettings"
 import { setupDateMenu } from "widget/datemenu/DateMenu"
 
+
 App.config({
     onConfigParsed: () => {
         setupQuickSettings()

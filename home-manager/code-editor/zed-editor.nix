@@ -1,6 +1,8 @@
-{ pkgs, lib, ...}:
+{ pkgs, inputs, ... }:
+
 {
-  home.packages = with pkgs; [
-    zed-editor
-  ];
+    home.packages =  [
+        # pkgs.zed-editor
+        # inputs.nixpkgs-stable.legacyPackages."${pkgs.hostPlatform.system}".zed-editor
+    ];
 }

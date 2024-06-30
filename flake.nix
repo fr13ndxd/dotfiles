@@ -1,13 +1,12 @@
 {
   description = "basic flake";
 
-  inputs = { 
+  inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    # hyprland.url = "github:hyprwm/Hyprland";
     # fix hyprland build error:
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; #&ref=xwayland-rewrite";
-    
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins?submodules=1";
       inputs.hyprland.follows = "hyprland";
@@ -40,7 +39,7 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         inherit system;
-        specialArgs = { 
+        specialArgs = {
           inherit inputs;
           asztal = self.packages.x86_64-linux.default;
         };

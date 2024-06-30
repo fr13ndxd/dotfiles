@@ -62,21 +62,24 @@ class Recorder extends Service {
     }
 
     async screenshot(full = false) {
-        if (!dependencies("slurp", "wayshot"))
+        if (!dependencies("slurp", "hyprshot"))
             return
 
+        const dir = this.#screenshots
         const file = `${this.#screenshots}/${now()}.png`
         Utils.ensureDirectory(this.#screenshots)
 
         if (full) {
-            await sh(`wayshot -f ${file}`)
+            //await sh(`wayshot -f ${file}`)
+            await sh(`hyprshot -o ${dir} -f ${now()}.png -m active -m output -s -z`)
         }
         else {
-            const size = await sh("slurp")
-            if (!size)
-                return
+            //const size = await sh("slurp")
+            //if (!size)
+            //    return
 
-            await sh(`wayshot -f ${file} -s "${size}"`)
+            //await sh(`wayshot -f ${file} -s "${size}"`)
+            await sh(`hyprshot -o ${dir} -f ${now()}.png -m region -s -z`)
         }
 
         bash(`wl-copy < ${file}`)
