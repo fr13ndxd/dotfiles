@@ -3,8 +3,8 @@
     home.packages = [ pkgs.neofetch ];
     home.file.".config/neofetch/config.conf".text = ''
     print_info() {
-    prin " \n \n ╭────┤ $(color 4) $(grep -Eo '^PRETTY_NAME="?[^"]*"?$' /etc/os-release | cut -d= -f2 | tr -d '"') $(color 15)├────╮"
-    info "\x20  " kernel 
+    prin " \n \n ╭────┤ $(color 4) $(grep -Eo '^PRETTY_NAME="?[^"]*"?$' /etc/os-release | cut -d= -f2 | tr -d '"') $(color 15)├───╮"
+    info "\x20  " kernel
     info "\x20  " wm
     info " \x20  " shell
     info "\x20   " term

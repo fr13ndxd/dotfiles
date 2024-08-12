@@ -8,8 +8,10 @@ window.indicator{
             border-radius: $radius;
             background-color: $primary-bg;
             color: $primary-fg;
+            margin-left: 20px;
             image {
                 -gtk-icon-transform: scale(0.7);
+                margin-left: 0px;
             }
         }
     }

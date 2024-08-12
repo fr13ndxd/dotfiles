@@ -21,6 +21,7 @@ App.config({
         setupQuickSettings()
         setupDateMenu()
         init()
+
     },
     closeWindowDelay: {
         "launcher": options.transition.value,

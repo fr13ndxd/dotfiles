@@ -3,32 +3,26 @@ let
    hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
    playerctl = "${pkgs.playerctl}/bin/playerctl";
    pactl = "${pkgs.pulseaudio}/bin/pactl";
-   # plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
    brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+   screenshot = import ../scripts/screenshot.nix pkgs;
 in
 {
+    imports = [ ./ags.nix ];
 
     wayland.windowManager.hyprland = {
         enable = true;
-        package = hyprland;
+        package = (hyprland.override {});
         systemd.enable = true;
         xwayland.enable = true;
-        # plugins = with plugins; [
-        #   hyprexpo
-        # ];
+        plugins = [
+           plugins.hyprexpo
+        ];
 
         settings = {
-          #env = [
-          #  "XCURSOR_THEME,catppuccin-mocha-dark"
-          #  "XCURSOR_SIZE,24"
-          #  "HYPRCURSOR_THEME,catppuccin-mocha-dark"
-          #  "HYPRCURSOR_SIZE,36"
-          #];
-
           exec-once = [
             "ags -b hypr"
-            # "wl-clipboard-history -t"
-            # "gsettings set $gnome-schema cursor-theme 'Catppuccin-Mocha-Dark-Cursors'"
+            "status-bar"
           ];
 
         monitor = [
@@ -58,10 +52,10 @@ in
 
           blur = {
             enabled = true;
-            size = 2;
-            passes = 1;
+            size = 1;
+            passes = 3;
             new_optimizations = "on";
-            noise = 0.01;
+            noise = 0;
             contrast = 0.9;
             brightness = 0.8;
           };
@@ -106,6 +100,11 @@ in
           workspace_swipe = "on";
         };
 
+        layerrule = [
+          "ignorealpha 0.01, bar"
+          "blur, bar"
+        ];
+
         windowrule = let
             f = regex: "float, ^(${regex})$";
         in [
@@ -131,9 +130,10 @@ in
             arr = [1 2 3 4 5 6 7 8 9];
         in [
           "CTRL SHIFT, R,         ${e}  quit; ags -b hypr"
+          "CTRL SHIFT, R,         exec, pkill status-bar; status-bar"
           "SUPER, D,              ${e}  -t launcher"
-          ",Print,                ${e}  -r 'recorder.screenshot()'"
-          "SHIFT,Print,           ${e}  -r 'recorder.screenshot(true)'"
+          ",Print,         exec, ${screenshot}"
+          "SHIFT,Print,    exec, ${screenshot} --full"
           "CTRL SHIFT,Print,      ${e}  -r 'recorder.start()'"
           "SUPER, Return, exec, wezterm"
           "SUPER,E, exec, nautilus -w"
@@ -183,7 +183,7 @@ in
 
         plugin = {
           hyprexpo = {
-            columns = 3;
+            columns = 2;
             gap_size = 5;
             bg_col = "rgb(232323)";
             workspace_method = "center current";

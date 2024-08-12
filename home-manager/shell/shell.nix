@@ -8,6 +8,12 @@ let
   name = "fr13nd";
 in
 {
+  imports = [
+    ./starship.nix
+    ./tmux.nix
+    ./wezterm.nix
+  ];
+
   programs = {
     git = {
       enable = true;

@@ -2,7 +2,7 @@
 
 @mixin calendar {
     @include widget;
-    padding: $padding*2 $padding*2 0;
+    padding: $padding $padding 0;
 
     calendar {
         all: unset;
@@ -33,53 +33,13 @@
         }
 
         font-size: 1.1em;
-        padding: .2em;
+        padding: .1em;
     }
 }
 
 window#datemenu .datemenu {
     @include floating-widget;
-
-    .notifications {
-        .header {
-            margin-bottom: $spacing;
-            margin-right: $spacing;
-
-            >label {
-                margin-left: $radius * .5;
-            }
-
-            button {
-                @include button;
-                padding: $padding*.7 $padding;
-            }
-        }
-
-        .notification-scrollable {
-            @include scrollable($top: true, $bottom: true);
-        }
-
-        .notification-list {
-            margin-right: $spacing;
-        }
-
-        .notification {
-            @include notification;
-            @include widget;
-            padding: $padding;
-            margin-bottom: $spacing;
-        }
-
-        .placeholder {
-            image {
-                font-size: 7em;
-            }
-
-            label {
-                font-size: 1.2em;
-            }
-        }
-    }
+    min-height: 500px;
 
 
     separator {

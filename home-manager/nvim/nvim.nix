@@ -1,16 +1,14 @@
 { pkgs, ... }:
-let 
+let
   deps = with pkgs;
   with nodePackages_latest; [
     # js, html
-    vscode-html-languageserver-bin
     vscode-langservers-extracted
     tailwindcss-language-server
     typescript-language-server
     svelte-language-server
-    eslint
+    eslint deno
     typescript
-    nodePackages_latest."@astrojs/language-server"
 
     # markup
     marksman

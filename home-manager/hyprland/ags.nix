@@ -12,7 +12,7 @@
     fd
     brightnessctl
     swww
-    inputs.matugen.packages.${system}.default
+    #inputs.matugen.packages.${system}.default
     slurp
     wf-recorder
     wl-clipboard
@@ -34,7 +34,7 @@
 
   programs.ags = {
     enable = true;
-    configDir = ../../../ags;
+    configDir = ../../ags;
     extraPackages = [ pkgs.libsoup_3 pkgs.accountsservice ];
   };
 }

@@ -31,7 +31,7 @@ const Player = (player: MprisPlayer) => {
 
     const title = Widget.Label({
         class_name: "title",
-        max_width_chars: 20,
+        max_width_chars: 30,
         truncate: "end",
         hpack: "start",
         label: player.bind("track_title"),
@@ -125,22 +125,18 @@ const Player = (player: MprisPlayer) => {
         cover,
         Widget.Box(
             { vertical: true },
-            Widget.Box([
-                title,
-                playericon,
-            ]),
+            Widget.Box({
+              hexpand: true,
+              halign: "end",
+              children: [ title ]
+            }),
             artist,
-            Widget.Box({ vexpand: true }),
-            positionSlider,
-            Widget.CenterBox({
-                class_name: "footer horizontal",
-                start_widget: positionLabel,
-                center_widget: Widget.Box([
-                    prev,
-                    playPause,
-                    next,
-                ]),
-                end_widget: lengthLabel,
+            Widget.Box({ vexpand: true  }),
+            Widget.Box({
+              vexpand: true,
+              css: "margin-left: 160px; margin-bottom: 20px;",
+              valign: "end",
+              children: [ prev, playPause, next ]
             }),
         ),
     )

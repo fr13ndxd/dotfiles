@@ -25,21 +25,15 @@ in
   home.username = "fr13nd";
   home.homeDirectory = "/home/fr13nd";
 
-
   imports = [
-    # window managers
-       # hyprland
-       ./window-managers/hyprland/hyprland.nix
-       ./window-managers/hyprland/ags.nix
-       ./window-managers/hyprland/gtk.nix
-       # gnome
-       ./window-managers/gnome/gnome.nix
+    ./hyprland/hyprland.nix
+    ./gnome/gnome.nix
 
-    # shell
-      ./shell/shell.nix
-      ./shell/starship.nix
-      ./shell/tmux.nix
-      ./shell/wezterm.nix
+    ./status-bar.nix
+
+    ./gtk.nix
+
+    ./shell/shell.nix
 
     # code editor
       ./code-editor/vscode.nix
@@ -51,7 +45,6 @@ in
     # other
      ./packages.nix
      ./home-files.nix
-
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -74,22 +67,14 @@ in
 
   home.packages = with pkgs; [
     telegram-desktop
-    gnome.gnome-tweaks
-    # neovim
-  #  moreWaita
+    gnome-tweaks
 
-   (pkgs.discord.override {
-  withOpenASAR = true;
-  withVencord = true;
-  vencord = pkgs.vencord.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "Vendicated";
-      repo = "Vencord";
-      rev = "d19b0aeb5be368689c0e81de3a1c014326146840";
-      hash = "sha256-krIXQiAmiXrqrGHeBzc0rKvp/OaT1W7xTyWqt0NUHMU=";
-    };
-  };
-})
+    vesktop
+
+ #  (pkgs.discord.override {
+ #     withOpenASAR = true;
+ #     withVencord = true;
+ #   })
 
     # other
     nerdfonts

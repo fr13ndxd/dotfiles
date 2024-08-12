@@ -3,10 +3,11 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "nixpkgs/staging-next"; # n for latest zed-editor
 
-    # fix hyprland build error:
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"; #&ref=xwayland-rewrite";
+    catppuccin.url = "github:catppuccin/nix";
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins?submodules=1";
       inputs.hyprland.follows = "hyprland";
@@ -17,11 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # matugen.url = "github:InioX/matugen";
-    matugen.url = "github:InioX/matugen?ref=v2.2.0";
+    #matugen.url = "github:InioX/matugen";
 
     ags.url = "github:Aylur/ags";
-    astal.url = "github:Aylur/astal";
+
+    status-bar.url = "github:fr13ndxd/status-bar";
 
     more-waita = {
       url = "https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip";
@@ -29,7 +30,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}@inputs:
+  outputs = { self, nixpkgs, home-manager, catppuccin, ...}@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -41,9 +42,9 @@
         inherit system;
         specialArgs = {
           inherit inputs;
-          asztal = self.packages.x86_64-linux.default;
+         #  asztal = self.packages.x86_64-linux.default;
         };
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/configuration.nix catppuccin.nixosModules.catppuccin ];
       };
     };
     homeConfigurations = {

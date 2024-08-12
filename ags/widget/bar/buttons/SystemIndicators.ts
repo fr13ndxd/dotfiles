@@ -2,11 +2,23 @@ import PanelButton from "../PanelButton"
 import icons from "lib/icons"
 import asusctl from "service/asusctl"
 
+const battery = await Service.import("battery")
 const notifications = await Service.import("notifications")
 const bluetooth = await Service.import("bluetooth")
 const audio = await Service.import("audio")
 const network = await Service.import("network")
 const powerprof = await Service.import("powerprofiles")
+
+const BatteryPercentLabel = () => Widget.Box({
+  children: [
+    Widget.Icon({
+      setup: self => self.hook(battery, () => {
+              self.icon = battery.icon_name
+      }),
+    }),
+    Widget.Label({ label: battery.bind("percent").as(p => `${p}%`), }),
+  ]
+})
 
 const ProfileIndicator = () => {
     const visible = asusctl.available
@@ -94,5 +106,6 @@ export default () => PanelButton({
         NetworkIndicator(),
         AudioIndicator(),
         MicrophoneIndicator(),
+        BatteryPercentLabel(),
     ]),
 })

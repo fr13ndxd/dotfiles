@@ -29,7 +29,7 @@ class Recorder extends Service {
 
         Utils.ensureDirectory(this.#recordings)
         this.#file = `${this.#recordings}/${now()}.mp4`
-        sh(`wf-recorder -g "${await sh("slurp")}" -f ${this.#file} --pixel-format yuv420p`)
+        sh(`wf-recorder -g "${await sh("slurp")}" -f ${this.#file}`)
 
         this.recording = true
         this.changed("recording")
@@ -82,7 +82,7 @@ class Recorder extends Service {
             await sh(`hyprshot -o ${dir} -f ${now()}.png -m region -s -z`)
         }
 
-        bash(`wl-copy < ${file}`)
+        //bash(`wl-copy < ${file}`)
 
         Utils.notify({
             image: file,

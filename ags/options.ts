@@ -71,21 +71,17 @@ const options = mkOptions(OPTIONS, {
             start: opt<Array<import("widget/bar/Bar").BarWidget>>([
                 "launcher",
                 "workspaces",
-                "taskbar",
                 "expander",
-                "messages",
             ]),
             center: opt<Array<import("widget/bar/Bar").BarWidget>>([
                 "date",
             ]),
             end: opt<Array<import("widget/bar/Bar").BarWidget>>([
-                "media",
                 "expander",
                 "systray",
                 "colorpicker",
                 "screenrecord",
                 "system",
-                "battery",
                 "powermenu",
             ]),
         },
@@ -157,7 +153,8 @@ const options = mkOptions(OPTIONS, {
             max: opt(6),
             favorites: opt([
                 [
-                    "firefox",
+                    "brave-browser",
+                    "discord",
                     "wezterm",
                     "org.gnome.Nautilus",
                     "org.gnome.Calendar",
@@ -187,11 +184,11 @@ const options = mkOptions(OPTIONS, {
             image: opt(`/var/lib/AccountsService/icons/${Utils.USER}`),
             size: opt(70),
         },
-        width: opt(380),
+        width: opt(280),
         position: opt<"left" | "center" | "right">("right"),
         networkSettings: opt("gtk-launch gnome-control-center"),
         media: {
-            monochromeIcon: opt(true),
+            monochromeIcon: opt(false),
             coverSize: opt(100),
         },
     },
@@ -229,7 +226,7 @@ const options = mkOptions(OPTIONS, {
     notifications: {
         position: opt<Array<"top" | "bottom" | "left" | "right">>(["top", "right"]),
         blacklist: opt(["Spotify"]),
-        width: opt(440),
+        width: opt(200),
     },
 
     hyprland: {

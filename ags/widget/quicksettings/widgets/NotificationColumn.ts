@@ -92,7 +92,7 @@ const Placeholder = () => Widget.Box({
 
 export default () => Widget.Box({
     class_name: "notifications",
-    css: options.notifications.width.bind().as(w => `min-width: ${w}px`),
+    //css: options.notifications.width.bind().as(w => `min-width: ${w}px`),
     vertical: true,
     children: [
         Header(),

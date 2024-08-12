@@ -1,22 +1,27 @@
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 let
   homeDirectory = "/home/fr13nd";
 in
 {
-  home.packages = [ pkgs.catppuccin-cursors ];
+  home.packages = [ pkgs.catppuccin-cursors pkgs.catppuccin-gtk pkgs.catppuccin];
+  imports = [inputs.catppuccin.homeManagerModules.catppuccin];
 
   gtk = {
     enable = true;
+
     cursorTheme = {
       name = "catppuccin-mocha-dark-cursors";
       package = pkgs.catppuccin-cursors.mochaDark;
     };
     iconTheme = {
-      name = "MoreWaita";
-      package = pkgs.morewaita-icon-theme;
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
     };
+
     theme = {
       name = "adw-gtk3-dark";
+      # name="catppuccin-mocha-dark";
+      # package=pkgs.catppuccin-gtk;
       package = pkgs.adw-gtk3;
     };
     gtk3.bookmarks = [
@@ -28,7 +33,7 @@ in
       "file://${homeDirectory}/Downloads"
       "file://${homeDirectory}/.config Config"
       "file://${homeDirectory}/.local/share Local"
-  ];
+    ];
   };
   home.pointerCursor = {
       name = "catppuccin-mocha-dark-cursors";

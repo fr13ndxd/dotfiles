@@ -9,6 +9,8 @@ const v = {
     expect: [1, 8, 1],
 }
 
+console.time()
+
 try {
     switch (bundler) {
         case "bun": await Utils.execAsync([
@@ -44,3 +46,4 @@ try {
 }
 
 export { }
+console.timeEnd()
