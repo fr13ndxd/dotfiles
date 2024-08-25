@@ -3,7 +3,6 @@ let
   deps = with pkgs;
   with nodePackages_latest; [
     # js, html
-    vscode-langservers-extracted
     tailwindcss-language-server
     typescript-language-server
     svelte-language-server
@@ -54,7 +53,7 @@ in
         tree-sitter
         ripgrep
         fd
-        fzf
+      #  fzf
       ]
       ++ deps;
   };

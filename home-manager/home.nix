@@ -1,4 +1,4 @@
-{ config, pkgs, inputs,... }:
+{ config, pkgs, inputs,nixpkgs-master,... }:
 
 let
    nerdfonts = (pkgs.nerdfonts.override { fonts = [
@@ -30,6 +30,7 @@ in
     ./gnome/gnome.nix
 
     ./status-bar.nix
+     ./binary-ninja.nix
 
     ./gtk.nix
 

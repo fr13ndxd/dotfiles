@@ -6,7 +6,7 @@
       };
 
       "org/gnome/desktop/interface" = {
-        cursor-theme = "catppuccin-mocha-dark-cursors";
+        # cursor-theme = "catppuccin-mocha-dark-cursors";
       };
 
       "org/gnome/desktop/peripherals/touchpad" = {

@@ -3,7 +3,7 @@ let
   homeDirectory = "/home/fr13nd";
 in
 {
-  home.packages = [ pkgs.catppuccin-cursors pkgs.catppuccin-gtk pkgs.catppuccin];
+  home.packages = [ pkgs.catppuccin-cursors ];
   imports = [inputs.catppuccin.homeManagerModules.catppuccin];
 
   gtk = {
@@ -20,8 +20,6 @@ in
 
     theme = {
       name = "adw-gtk3-dark";
-      # name="catppuccin-mocha-dark";
-      # package=pkgs.catppuccin-gtk;
       package = pkgs.adw-gtk3;
     };
     gtk3.bookmarks = [
@@ -31,8 +29,8 @@ in
       "file://${homeDirectory}/Videos"
       "file://${homeDirectory}/Desktop"
       "file://${homeDirectory}/Downloads"
-      "file://${homeDirectory}/.config Config"
-      "file://${homeDirectory}/.local/share Local"
+      "file://${homeDirectory}/.config .config"
+      "file://${homeDirectory}/.local/share .local"
     ];
   };
   home.pointerCursor = {

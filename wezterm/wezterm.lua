@@ -1,5 +1,6 @@
 return {
     enable_wayland = false,
+   -- front_end = "WebGpu",
 
     color_schemes = {
         ["Gnome Light"] = require("gnome"),

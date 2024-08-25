@@ -1,13 +1,13 @@
-{ pkgs, ags, ...}:
-
+{ pkgs, ags, inputs, ...}:
 {
   home.packages = with pkgs; with nodePackages_latest; [
- # hyprland
+    (cutter.withPlugins(ps: with ps; [ jsdec rz-ghidra sigdb ]))
+    ghidra
  accountsservice
-  wezterm
   spotube
  spicetify-cli
  figma-linux
+ ripgrep
 
  i2c-tools ddcutil
 
@@ -21,7 +21,7 @@
 
  # other
  gnumake cmake session-desktop hyperfine steam
- vimPlugins.telescope-fzf-native-nvim icon-library
+  icon-library
  ibus
 
  wayland-scanner wl-clipboard

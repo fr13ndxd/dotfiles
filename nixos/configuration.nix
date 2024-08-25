@@ -13,6 +13,18 @@
         ./hyprland.nix
     ];
 
+   # services.desktopManager.cosmic.enable = true;
+
+    programs.dconf.profiles.gdm.databases = [
+      {
+        settings = {
+          "org/gnome/desktop/interface" = {
+            cursor-theme = "catppucin-mochaDark";
+          };
+        };
+      }
+    ];
+
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   virtualisation.virtualbox.host.enable = true;
@@ -47,6 +59,63 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    alsa-lib
+    at-spi2-atk
+    at-spi2-core
+    atk
+    cairo
+    cups
+    curl
+    dbus
+    expat
+    fontconfig
+    freetype
+    fuse3
+    gdk-pixbuf
+    glib
+    gtk3
+    icu
+    libGL
+    libappindicator-gtk3
+    libdrm
+    libglvnd
+    libnotify
+    libpulseaudio
+    libunwind
+    libusb1
+    libuuid
+    libxkbcommon
+    libxml2
+    mesa
+    nspr
+    nss
+    openssl
+    pango
+    pipewire
+    stdenv.cc.cc
+    systemd
+    vulkan-loader
+    xorg.libX11
+    xorg.libXScrnSaver
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libxcb
+    xorg.libxkbfile
+    xorg.libxshmfence
+    zlib
+  ];
+
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -122,9 +191,10 @@
       gnome-extension-manager
 
       nautilus
+      hyprshade
 
       # zed-editor
-      inputs.nixpkgs-master.legacyPackages."${pkgs.hostPlatform.system}".zed-editor
+      inputs.nixpkgs-staging.legacyPackages."${pkgs.hostPlatform.system}".zed-editor
       # zed-editor
     ];
   };
@@ -133,11 +203,12 @@
     allowUnfree = true;
   };
 
-  programs.nix-ld.enable = true;
-
   environment.systemPackages = with pkgs; [
     gcc
     clang
+    pkgs.zigpkgs.master
+    inputs.zls-master.packages.${system}.default
+    #zls
     rustfmt rustup
     openssl openssl.dev
     dotnet-sdk_8

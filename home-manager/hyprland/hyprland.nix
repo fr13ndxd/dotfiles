@@ -15,14 +15,20 @@ in
         package = (hyprland.override {});
         systemd.enable = true;
         xwayland.enable = true;
+
         plugins = [
-           plugins.hyprexpo
+          # plugins.hyprexpo
         ];
 
         settings = {
           exec-once = [
-            "ags -b hypr"
             "status-bar"
+            "ags -b hypr"
+          ];
+
+          env = [
+            "HYPRCURSOR_THEME,catppuccin-mochaDark"
+            "HYPRCURSOR_SIZE,24"
           ];
 
         monitor = [
