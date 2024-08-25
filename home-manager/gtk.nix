@@ -1,10 +1,7 @@
-{ pkgs, inputs, ...}:
-let
-  homeDirectory = "/home/fr13nd";
-in
-{
+{ pkgs, inputs, ... }:
+let homeDirectory = "/home/fr13nd";
+in {
   home.packages = [ pkgs.catppuccin-cursors ];
-  imports = [inputs.catppuccin.homeManagerModules.catppuccin];
 
   gtk = {
     enable = true;
@@ -30,12 +27,11 @@ in
       "file://${homeDirectory}/Desktop"
       "file://${homeDirectory}/Downloads"
       "file://${homeDirectory}/.config .config"
-      "file://${homeDirectory}/.local/share .local"
     ];
   };
   home.pointerCursor = {
-      name = "catppuccin-mocha-dark-cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
+    name = "catppuccin-mocha-dark-cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    size = 16;
+  };
 }

@@ -1,8 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, pkgs, ... }:
+let
   lang = icon: color: {
     symbol = icon;
     format = "[$symbol ](${color})";
@@ -31,14 +28,14 @@
       "$status"
       "$line_break"
       "[❯](bold purple)"
-      ''''${custom.space}''
+      "\${custom.space}"
     ];
     custom.space = {
-      when = ''! test $env'';
+      when = "! test $env";
       format = "  ";
     };
     continuation_prompt = "∙  ┆ ";
-    line_break = {disabled = false;};
+    line_break = { disabled = false; };
     status = {
       symbol = "✗";
       not_found_symbol = "󰍉 Not Found";
@@ -56,29 +53,19 @@
     };
     nix_shell = {
       disabled = false;
-      format = "[${pad.left}](fg:white)[ ](bg:white fg:black)[${pad.right}](fg:white) ";
+      format =
+        "[${pad.left}](fg:white)[ ](bg:white fg:black)[${pad.right}](fg:white) ";
     };
     container = {
       symbol = " 󰏖";
       format = "[$symbol ](yellow dimmed)";
     };
     directory = {
-      format = " [${pad.left}](fg:bright-black)[$path](bg:bright-black fg:white)[${pad.right}](fg:bright-black)";
+      format =
+        " [${pad.left}](fg:bright-black)[$path](bg:bright-black fg:white)[${pad.right}](fg:bright-black)";
       truncation_length = 6;
       truncation_symbol = "~/󰇘/";
     };
-    # directory.substitutions = {
-    #   "Documents" = "󰈙 ";
-    #   "Downloads" = " ";
-    #   "Music" = " ";
-    #   "Pictures" = " ";
-    #   "Videos" = " ";
-    #   "Projects" = "󱌢 ";
-    #   "School" = "󰑴 ";
-    #   "GitHub" = "";
-    #   ".config" = " ";
-    #   "Vault" = "󱉽 ";
-    # };
     git_branch = {
       symbol = "";
       style = "";
@@ -107,7 +94,7 @@
     c = lang "" "blue";
     golang = lang "" "blue";
   };
-  tomlFormat = pkgs.formats.toml {};
+  tomlFormat = pkgs.formats.toml { };
   starshipCmd = "${pkgs.starship}/bin/starship";
 in {
   xdg.configFile."starship.toml" = {

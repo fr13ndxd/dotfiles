@@ -1,29 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, pkgs, config, asztal, lib, catppuccin, ... }:
 
 {
-  imports =
-    [
-        /etc/nixos/hardware-configuration.nix
+  imports = [
+    /etc/nixos/hardware-configuration.nix
 
-        ./bootloader.nix
-        ./hyprland.nix
-    ];
+    ./bootloader.nix
+    ./hyprland.nix
+  ];
 
-   # services.desktopManager.cosmic.enable = true;
-
-    programs.dconf.profiles.gdm.databases = [
-      {
-        settings = {
-          "org/gnome/desktop/interface" = {
-            cursor-theme = "catppucin-mochaDark";
-          };
-        };
-      }
-    ];
+  # services.desktopManager.cosmic.enable = true;
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
@@ -33,18 +18,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
   networking.networkmanager.enable = true;
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "Europe/Prague";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "cs_CZ.UTF-8";
     LC_IDENTIFICATION = "cs_CZ.UTF-8";
@@ -56,10 +35,6 @@
     LC_TELEPHONE = "cs_CZ.UTF-8";
     LC_TIME = "cs_CZ.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -116,7 +91,6 @@
     zlib
   ];
 
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -136,16 +110,16 @@
     yelp # Help view
     gnome-font-viewer
   ]) ++ (with pkgs.gnome; [
-  gnome-music
-  gnome-characters
-  tali # poker game
-  iagno # go game
-  hitori # sudoku game
-  atomix # puzzle game
-  gnome-contacts
-  gnome-initial-setup
-  gnome-shell-extensions
-  gnome-maps
+    gnome-music
+    gnome-characters
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
+    gnome-contacts
+    gnome-initial-setup
+    gnome-shell-extensions
+    gnome-maps
   ]);
 
   # Configure keymap in X11
@@ -176,7 +150,6 @@
     pulse.enable = true;
   };
 
-  programs.steam.enable = true;
   users.users.fr13nd = {
     isNormalUser = true;
     description = "fr13nd";
@@ -184,33 +157,27 @@
     packages = with pkgs; [
       firefox
       brave
-
-      wineWowPackages.stable winetricks
-
-      spotify gnomeExtensions.mute-spotify-ads
+      wineWowPackages.stable
+      winetricks
+      spotify
+      gnomeExtensions.mute-spotify-ads
       gnome-extension-manager
-
       nautilus
       hyprshade
-
-      # zed-editor
-      inputs.nixpkgs-staging.legacyPackages."${pkgs.hostPlatform.system}".zed-editor
-      # zed-editor
+      zed-editor
     ];
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
+  nixpkgs.config = { allowUnfree = true; };
   environment.systemPackages = with pkgs; [
     gcc
     clang
     pkgs.zigpkgs.master
     inputs.zls-master.packages.${system}.default
-    #zls
-    rustfmt rustup
-    openssl openssl.dev
+    rustfmt
+    rustup
+    openssl
+    openssl.dev
     dotnet-sdk_8
     accountsservice
 
@@ -219,13 +186,6 @@
     networkmanager
   ];
 
-  security = {
-    polkit.enable = true;
-    pam.services.ags = {};
-  };
-
   services.accounts-daemon.enable = true;
-
   system.stateVersion = "24.05";
-
 }

@@ -1,18 +1,13 @@
-{ inputs, pkgs, ... }:
-{
-  imports = [
-    inputs.ags.homeManagerModules.default
-    # inputs.astal.homeManagerModules.default
-  ];
+{ inputs, pkgs, ... }: {
+  imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
-   # asztal
+    # asztal
     bun
     dart-sass
     fd
     brightnessctl
     swww
-    #inputs.matugen.packages.${system}.default
     slurp
     wf-recorder
     wl-clipboard
@@ -24,13 +19,6 @@
     gtk3
     hyprshot
   ];
-
-  # programs.astal = {
-  #   enable = true;
-  #   extraPackages = with pkgs; [
-  #     libadwaita
-  #   ];
-  # };
 
   programs.ags = {
     enable = true;

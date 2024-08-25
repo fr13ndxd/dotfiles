@@ -1,6 +1,6 @@
 return {
     enable_wayland = false,
-   -- front_end = "WebGpu",
+    -- front_end = "WebGpu",
 
     color_schemes = {
         ["Gnome Light"] = require("gnome"),
@@ -11,7 +11,7 @@ return {
     font_size = 9,
     default_cursor_style = "BlinkingBar",
 
-    default_prog = { "tmux" },
+    default_prog = { "nu" },
     window_close_confirmation = "NeverPrompt",
     hide_tab_bar_if_only_one_tab = true,
 

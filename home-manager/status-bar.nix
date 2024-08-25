@@ -1,9 +1,8 @@
-{ pkgs, inputs, config, ...}:
+{ pkgs, inputs, ... }:
 
 {
-  home.packages = with pkgs; with nodePackages_latest; [
+  home.packages = with pkgs; [
     inputs.status-bar.defaultPackage.${system}
-
     pulseaudio
   ];
 }
