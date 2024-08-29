@@ -1,14 +1,50 @@
-{ inputs, pkgs, config, asztal, lib, catppuccin, ... }:
-
+{ inputs, pkgs, ... }: let
+  username = "fr13nd";
+in
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
+
+    <home-manager/nixos>
 
     ./bootloader.nix
     ./hyprland.nix
   ];
 
-  # services.desktopManager.cosmic.enable = true;
+  home-manager = {
+    backupFileExtension = "backup";
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs;};
+    users.${username} = {
+      home.username = username;
+      home.homeDirectory = "/home/${username}";
+      imports = [
+        ../home/hyprland/hyprland.nix
+
+        ../home/fonts.nix
+
+        ../home/status-bar.nix
+        ../home/binary-ninja.nix
+
+        ../home/gtk.nix
+
+        ../home/shell/shell.nix
+        ../home/wezterm
+
+        # code editor
+        ../home/code-editor/vscode.nix
+
+        # helix
+        ../home/helix/helix.nix
+
+        # other
+        ../home/packages.nix
+        ../home/home-files.nix
+      ];
+      home.stateVersion = "23.05";
+    };
+  };
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
@@ -90,38 +126,6 @@
     xorg.libxshmfence
     zlib
   ];
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-console
-    gnome-photos
-    gnome-tour
-    gnome-connections
-    snapshot
-    gedit
-    cheese # webcam tool
-    epiphany # web browser
-    geary # email reader
-    evince # document viewer
-    totem # video player
-    yelp # Help view
-    gnome-font-viewer
-  ]) ++ (with pkgs.gnome; [
-    gnome-music
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
-    gnome-contacts
-    gnome-initial-setup
-    gnome-shell-extensions
-    gnome-maps
-  ]);
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "cz";

@@ -1,6 +1,11 @@
 { pkgs, ags, inputs, ... }: {
   home.packages = with pkgs;
     with nodePackages_latest; [
+    telegram-desktop
+    gnome-tweaks
+
+    vesktop
+
       (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
       ghidra
       accountsservice

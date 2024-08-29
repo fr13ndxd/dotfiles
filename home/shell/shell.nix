@@ -7,7 +7,7 @@ let
   email = "fr13nd65@protonmail.com";
   name = "fr13nd";
 in {
-  imports = [ ./starship.nix ./wezterm.nix ];
+  imports = [ ./starship.nix ];
 
   programs = {
     git = {

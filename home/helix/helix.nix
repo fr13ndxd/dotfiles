@@ -1,9 +1,11 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [ vscode-langservers-extracted ];
   programs.helix = {
     enable = true;
     settings = {
       theme = "catppuccin_mocha";
       editor = {
+        mouse = false;
         line-number = "relative";
         cursorline = true;
         scrolloff = 5;
@@ -23,16 +25,16 @@
 
         lsp = {
           display-messages = true;
-          display-inlay-hints = true;
+          display-inlay-hints = false;
         };
 
-        whitespace.render = "all";
-        whitespace.characters = {
-          space = "·";
-          nbsp = "⍽";
-          tab = "→";
-          newline = "⤶";
-        };
+        whitespace.render = "none";
+        # whitespace.characters = {
+        #   space = "·";
+        #   nbsp = "⍽";
+        #   tab = "→";
+        #   newline = "⤶";
+        # };
 
         gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
         statusline = {
@@ -63,13 +65,17 @@
 
         indent-guides = {
           render = true;
-          rainbow-option = "normal";
+          # rainbow-option = "normal";
         };
       };
 
-      keys.insert = { "A-x" = "normal_mode"; };
+      keys.insert = {
+        "A-x" = "normal_mode";
+        "C-x" = "completion";
+      };
 
       keys.normal = {
+        "C-k" = "hover"; # show documentation for item under cursor (ctrl + k)
         "F1" = "command_palette";
         "C-f" = "file_picker";
         "X" = "extend_line_above";
@@ -84,7 +90,7 @@
     languages.language = [{
       name = "nix";
       auto-format = true;
-      formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
     }];
   };
 }

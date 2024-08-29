@@ -23,34 +23,6 @@ let
     package = pkgs.morewaita-icon-theme;
   };
 in {
-  home.username = "fr13nd";
-  home.homeDirectory = "/home/fr13nd";
-
-  imports = [
-    ./hyprland/hyprland.nix
-    ./gnome/gnome.nix
-
-    ./status-bar.nix
-    ./binary-ninja.nix
-
-    ./gtk.nix
-
-    ./shell/shell.nix
-
-    # code editor
-    ./code-editor/vscode.nix
-
-    # helix
-    ./helix/helix.nix
-
-    # other
-    ./packages.nix
-    ./home-files.nix
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-  home.stateVersion = "23.05";
-
   home.file = {
     ".local/share/fonts" = {
       recursive = true;
@@ -64,15 +36,5 @@ in {
 
   gtk = { inherit font; };
 
-  home.packages = with pkgs; [
-    telegram-desktop
-    gnome-tweaks
-
-    vesktop
-
-    # other
-    nerdfonts
-  ];
-
-  programs.home-manager.enable = true;
+  home.packages = [ nerdfonts ];
 }
