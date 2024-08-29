@@ -1,10 +1,9 @@
 { pkgs, ags, inputs, ... }: {
   home.packages = with pkgs;
     with nodePackages_latest; [
-    telegram-desktop
-    gnome-tweaks
-
-    vesktop
+      telegram-desktop
+      gnome-tweaks
+      vesktop
 
       (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
       ghidra
@@ -35,20 +34,9 @@
       glib
       htop
       tree
-
-      # langs
-      nodejs
-      go
       sassc
-      typescript
-      meson
-      ninja
-      eslint
-      jdk8
 
       # other
-      gnumake
-      cmake
       session-desktop
       hyperfine
       steam

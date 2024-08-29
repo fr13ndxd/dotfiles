@@ -1,11 +1,12 @@
-{ inputs, pkgs, ... }: let
-  username = "fr13nd";
-in
-{
+{ inputs, pkgs, ... }:
+let username = "fr13nd";
+in {
   imports = [
     /etc/nixos/hardware-configuration.nix
 
     <home-manager/nixos>
+
+    ./gnome.nix
 
     ./bootloader.nix
     ./hyprland.nix
@@ -15,38 +16,36 @@ in
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
     users.${username} = {
       home.username = username;
       home.homeDirectory = "/home/${username}";
       imports = [
-        ../home/hyprland/hyprland.nix
+        ../home/development
+        ../home/editors
+        ../home/wayland
+        ../home/wezterm
+        ../home/cli-tools
 
         ../home/fonts.nix
 
-        ../home/status-bar.nix
         ../home/binary-ninja.nix
 
         ../home/gtk.nix
 
         ../home/shell/shell.nix
-        ../home/wezterm
-
-        # code editor
-        ../home/code-editor/vscode.nix
-
-        # helix
-        ../home/helix/helix.nix
 
         # other
         ../home/packages.nix
         ../home/home-files.nix
       ];
-      home.stateVersion = "23.05";
+      home.stateVersion = "24.05";
     };
   };
 
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
+  nixpkgs.config.permittedInsecurePackages = [ "olm-3.2.16" ];
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.guest.enable = true;

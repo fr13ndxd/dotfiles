@@ -19,7 +19,6 @@
     totem # video player
     yelp # Help view
     gnome-font-viewer
-  ]) ++ (with pkgs.gnome; [
     gnome-music
     gnome-characters
     tali # poker game

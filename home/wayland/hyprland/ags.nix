@@ -2,7 +2,6 @@
   imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
-    # asztal
     bun
     dart-sass
     fd
@@ -15,6 +14,7 @@
     swappy
     hyprpicker
     pavucontrol
+    upower
     networkmanager
     gtk3
     hyprshot
@@ -22,7 +22,7 @@
 
   programs.ags = {
     enable = true;
-    configDir = ../../ags;
+    configDir = ./ags;
     extraPackages = [ pkgs.libsoup_3 pkgs.accountsservice ];
   };
 }

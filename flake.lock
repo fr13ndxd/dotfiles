@@ -560,51 +560,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1724684795,
-        "narHash": "sha256-Y0L/3OCfiD20VCgY/ZXWkijmaXGUpp1QjijZqL4aJS8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "94930d463b3c7b50eb6a6a8a25089759a8431f59",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "master",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1724316499,
-        "narHash": "sha256-Qb9MhKBUTCfWg/wqqaxt89Xfi6qTD3XpTzQ9eXi3JmE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "797f7dc49e0bc7fab4b57c021cdf68f595e47841",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-24.05",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs-staging": {
-      "locked": {
-        "lastModified": 1724673925,
-        "narHash": "sha256-IDrlawFddlzMDHRqa7jqQWG3nmueoyqLGZHk8/rUUMQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "132f2322d0b6f6772a4c9e1c3d23030f87d25b35",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "staging-next",
-        "type": "indirect"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1724395761,
@@ -705,9 +660,6 @@
         "hyprland-plugins": "hyprland-plugins",
         "more-waita": "more-waita",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-stable": "nixpkgs-stable",
-        "nixpkgs-staging": "nixpkgs-staging",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "status-bar": "status-bar",
         "wezterm-flake": "wezterm-flake",

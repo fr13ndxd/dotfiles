@@ -4,9 +4,9 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
-    nixpkgs-staging.url = "nixpkgs/staging-next"; # for latest zed-editor
-    nixpkgs-master.url = "nixpkgs/master";
+    # nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+    # nixpkgs-staging.url = "nixpkgs/staging-next"; # for latest zed-editor
+    # nixpkgs-master.url = "nixpkgs/master";
 
     binary-ninja = {
       url = "github:jchv/nix-binary-ninja";
@@ -40,38 +40,39 @@
     status-bar.url = "github:fr13ndxd/status-bar";
 
     more-waita = {
-      url = "https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip";
+      url =
+        "https://github.com/somepaulo/MoreWaita/archive/refs/heads/main.zip";
       flake = false;
     };
   };
 
-  outputs = { self, zig, nixpkgs, home-manager, catppuccin, zls-master, ...}@inputs:
+  outputs =
+    { self, nixpkgs, home-manager, catppuccin, zls-master, zig, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [ ./nixos/configuration.nix
-            {nixpkgs.overlays = [zig.overlays.default];}
+      nixosConfigurations = {
+        nixos = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./nixos/configuration.nix
+            { nixpkgs.overlays = [ zig.overlays.default ]; }
             catppuccin.nixosModules.catppuccin
-        ];
+          ];
+        };
       };
-    };
-    homeConfigurations = {
-      fr13nd = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home/home.nix ];
-      };
-    };
+      # homeConfigurations = {
+      #   fr13nd = home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     extraSpecialArgs = { inherit inputs; };
+      #     modules = [ ./home/home.nix ];
+      #   };
+      # };
 
-   nixpkgs.config.allowUnfree = true;
-  };
+      nixpkgs.config.allowUnfree = true;
+    };
 
 }

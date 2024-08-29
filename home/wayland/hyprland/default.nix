@@ -5,9 +5,9 @@ let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  screenshot = import ../scripts/screenshot.nix pkgs;
+  screenshot = import ./scripts/screenshot.nix pkgs;
 in {
-  imports = [ ./ags.nix ];
+  imports = [ ./ags.nix ./status-bar.nix ];
 
   wayland.windowManager.hyprland = {
     enable = true;
