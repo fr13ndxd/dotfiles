@@ -2,7 +2,9 @@ pkgs:
 let
   notify-send = "${pkgs.libnotify}/bin/notify-send";
   slurp = "${pkgs.slurp}/bin/slurp";
-  hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
+  wayshot = "${pkgs.wayshot}/bin/wayshot";
+  # hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
+  hyprpicker = "${pkgs.hyprpicker}/bin/hyprpicker";
   swappy = "${pkgs.swappy}/bin/swappy";
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
 in pkgs.writeShellScript "screenshot" ''
@@ -13,16 +15,20 @@ in pkgs.writeShellScript "screenshot" ''
   mkdir -p $SCREENSHOTS
 
   if [[ -n "$1" ]]; then
-      RESULT="$(${hyprshot} -s -z -m active -m output -o $SCREENSHOTS -f $NOW.png 2>&1)"
-      if [[ "$RESULT" == *"selection cancelled"* ]]; then
-          exit 1
-      fi
+      ${wayshot} -f $TARGET
   else
-      RESULT="$(${hyprshot} -s -z -m region -o $SCREENSHOTS -f $NOW.png 2>&1)"
-      if [[ "$RESULT" == *"selection cancelled"* ]]; then
-          exit 1
+      ${hyprpicker} -r -z &
+      sleep 0.2
+      RESULT="$(${slurp} -w 0)"
+       ${notify-send} "$RESULT"
+      if [[ $RESULT == *"selection cancelled"* ]] then
+          exit
       fi
+      pkill hyprpicker
+      ${wayshot} -s "$RESULT" -c -f $TARGET
   fi
+
+  wl-copy < $TARGET
 
   RES=$(${notify-send} \
       -a "Screenshot" \

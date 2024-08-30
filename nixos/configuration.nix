@@ -35,7 +35,6 @@ in {
 
         ../home/shell/shell.nix
 
-        # other
         ../home/packages.nix
         ../home/home-files.nix
       ];

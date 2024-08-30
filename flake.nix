@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
+    # nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     # nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     # nixpkgs-staging.url = "nixpkgs/staging-next"; # for latest zed-editor
     # nixpkgs-master.url = "nixpkgs/master";
