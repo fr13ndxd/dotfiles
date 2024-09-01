@@ -6,9 +6,9 @@ in {
 
     <home-manager/nixos>
 
-    ./gnome.nix
+    ../modules/gnome.nix
+    ../modules/bootloader.nix
 
-    ./bootloader.nix
     ./hyprland.nix
   ];
 

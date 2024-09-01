@@ -59,6 +59,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/configuration.nix
+
             { nixpkgs.overlays = [ zig.overlays.default ]; }
             catppuccin.nixosModules.catppuccin
           ];

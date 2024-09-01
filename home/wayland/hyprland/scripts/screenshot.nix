@@ -1,49 +1,50 @@
 pkgs:
 let
+  nu = "${pkgs.nushell}/bin/nu";
   notify-send = "${pkgs.libnotify}/bin/notify-send";
   slurp = "${pkgs.slurp}/bin/slurp";
   wayshot = "${pkgs.wayshot}/bin/wayshot";
-  # hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
   hyprpicker = "${pkgs.hyprpicker}/bin/hyprpicker";
   swappy = "${pkgs.swappy}/bin/swappy";
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
-in pkgs.writeShellScript "screenshot" ''
-  SCREENSHOTS="$HOME/Pictures/Screenshots"
-  NOW=$(date +%Y-%m-%d_%H-%M-%S)
-  TARGET="$SCREENSHOTS/$NOW.png"
+in pkgs.writeScriptBin "screenshot" ''
+  #!${nu}
+  use std
 
-  mkdir -p $SCREENSHOTS
+  let SCREENSHOTS = $"($env.HOME)/Pictures/Screenshots"
+  let NOW = $"(date now | format date "%Y-%m-%d_%H-%M-%S")"
+  let target = $"($SCREENSHOTS)/($NOW).png"
 
-  if [[ -n "$1" ]]; then
-      ${wayshot} -f $TARGET
-  else
-      ${hyprpicker} -r -z &
-      sleep 0.2
-      RESULT="$(${slurp} -w 0)"
-       ${notify-send} "$RESULT"
-      if [[ $RESULT == *"selection cancelled"* ]] then
-          exit
-      fi
+  mkdir $SCREENSHOTS
+
+  def --wrapped main [fullscreen: string = "uwu", ...rest] {
+    if $fullscreen == "-f" {
+      ${wayshot} -f $target
+    } else {
+      bash -c  "${hyprpicker} -rz &"
+      sleep 200ms    
+      let RESULT = $"(${slurp} -w 0)"
       pkill hyprpicker
-      ${wayshot} -s "$RESULT" -c -f $TARGET
-  fi
+      ${wayshot} -s $"($RESULT)" -c -f $target
+    }
 
-  wl-copy < $TARGET
+    if ($target | path exists) {
+     open $target | ${wl-copy}
 
-  RES=$(${notify-send} \
-      -a "Screenshot" \
-      -i "image-x-generic-symbolic" \
-      -h string:image-path:$TARGET \
-      -A "file=Show in Files" \
-      -A "view=View" \
-      -A "edit=Edit" \
-      "Screenshot Taken" \
-      $TARGET)
-
-  case "$RES" in
-      "file") xdg-open "$SCREENSHOTS" ;;
-      "view") xdg-open $TARGET ;;
-      "edit") ${swappy} -f $TARGET ;;
-      *) ;;
-  esac
+      let res = (
+          ${notify-send} -a "Screenshot" -i "image-x-generic-symbolic" 
+                      -h $"string:image-path:($target)" 
+                      -A "file=Show in files" 
+                      -A "view=View" 
+                      -A "edit=Edit" 
+                      "Screenshot Taken" 
+                      $"($target)"
+      )  
+      match $res {
+        "file" => (xdg-open $SCREENSHOTS),
+        "view" => (xdg-open $target),
+        "edit" => (${swappy} -f $target)
+      }
+    }
+  }
 ''

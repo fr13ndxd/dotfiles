@@ -5,6 +5,10 @@
       gnome-tweaks
       vesktop
 
+      gtk4
+      gtk4-layer-shell
+      pkg-config
+
       (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
       ghidra
       accountsservice

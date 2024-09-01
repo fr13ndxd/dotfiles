@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ vscode-langservers-extracted ];
   programs.helix = {
     enable = true;
     settings = {
@@ -75,6 +74,8 @@
       };
 
       keys.normal = {
+        "y" = ":clipboard-yank";
+        "p" = ":clipboard-paste-before";
         "C-k" = "hover"; # show documentation for item under cursor (ctrl + k)
         "F1" = "command_palette";
         "C-f" = "file_picker";

@@ -1,11 +1,12 @@
 { inputs, pkgs, ... }:
 let
+  nu = "${pkgs.nushell}/bin/nu";
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   playerctl = "${pkgs.playerctl}/bin/playerctl";
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  screenshot = import ./scripts/screenshot.nix pkgs;
+  screenshot = "${import ./scripts/screenshot.nix pkgs}/bin/screenshot";
 in {
   imports = [ ./ags.nix ./status-bar.nix ];
 
@@ -18,7 +19,7 @@ in {
     settings = {
       exec-once = [ "status-bar" "ags -b hypr" ];
 
-      env = [ "HYPRCURSOR_THEME,catppuccin-mochaDark" "HYPRCURSOR_SIZE,24" ];
+      # env = [ "HYPRCURSOR_THEME,catppuccin-mochaDark" "HYPRCURSOR_SIZE,24" ];
       monitor = [ "eDP-1, 1920x1080@500, 0x0, 1" ];
       cursor = { no_hardware_cursors = true; };
 
@@ -110,8 +111,8 @@ in {
         "CTRL SHIFT, R,         ${e}  quit; ags -b hypr"
         "CTRL SHIFT, R,         exec, pkill status-bar; status-bar"
         "SUPER, D,              ${e}  -t launcher"
-        ",Print,         exec, ${screenshot}"
-        "SHIFT,Print,    exec, ${screenshot} --full"
+        ",Print,         exec, ${nu} ${screenshot}"
+        "SHIFT,Print,    exec, ${nu} ${screenshot} -f"
         "CTRL SHIFT,Print,      ${e}  -r 'recorder.start()'"
         "SUPER, Return, exec, wezterm"
         "SUPER,E, exec, nautilus -w"

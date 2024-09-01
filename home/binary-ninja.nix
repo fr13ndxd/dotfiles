@@ -1,13 +1,12 @@
 { pkgs, ags, inputs, ... }: {
-  home.packages = with pkgs;
-    [
-      (pkgs.buildFHSUserEnv {
-        name = "binaryninja";
-        targetPkgs = pkgs: with pkgs; [ inputs.binary-ninja ];
-        runScript =
-          "${inputs.binary-ninja.packages.${system}.default}/bin/binaryninja";
-      })
-    ];
+  home.packages = with pkgs; [
+    (pkgs.buildFHSUserEnv {
+      name = "binaryninja";
+      #targetPkgs = [inputs.binary-ninja];
+      runScript =
+        "${inputs.binary-ninja.packages.${system}.default}/bin/binaryninja";
+    })
+  ];
   home.file.".local/share/applications/binaryninja.desktop".text = ''
     [Desktop Entry]
     Type=Application

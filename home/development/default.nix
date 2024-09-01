@@ -1,4 +1,5 @@
 { pkgs, ags, inputs, ... }: {
+  imports = [ ./lazygit.nix ];
   home.packages = with pkgs;
     with nodePackages_latest; [
       # debugger
