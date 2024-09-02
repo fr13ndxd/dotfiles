@@ -29,6 +29,7 @@ in {
 
         ../home/fonts.nix
 
+        # currently doesnt build :(
         ../home/binary-ninja.nix
 
         ../home/gtk.nix

@@ -8,7 +8,12 @@ let
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
   screenshot = "${import ./scripts/screenshot.nix pkgs}/bin/screenshot";
 in {
-  imports = [ ./ags.nix ./status-bar.nix ];
+  imports = [
+    ./statusbar/ags.nix
+    ./statusbar/status-bar.nix
+    # ./binds.nix
+    ./settings.nix
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -17,59 +22,6 @@ in {
     xwayland.enable = true;
 
     settings = {
-      exec-once = [ "status-bar" "ags -b hypr" ];
-
-      # env = [ "HYPRCURSOR_THEME,catppuccin-mochaDark" "HYPRCURSOR_SIZE,24" ];
-      monitor = [ "eDP-1, 1920x1080@500, 0x0, 1" ];
-      cursor = { no_hardware_cursors = true; };
-
-      general = {
-        layout = "dwindle";
-        gaps_in = 8;
-        gaps_out = 16;
-        border_size = 0;
-      };
-
-      decoration = {
-        rounding = 11;
-        active_opacity = 1;
-        inactive_opacity = 1;
-        drop_shadow = "yes";
-        shadow_range = 8;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(00000044)";
-        dim_inactive = false;
-
-        blur = {
-          enabled = true;
-          size = 1;
-          passes = 3;
-          new_optimizations = "on";
-          noise = 0;
-          contrast = 0.9;
-          brightness = 0.8;
-        };
-      };
-
-      animations = {
-        enabled = "yes";
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 5, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
-      };
-
-      misc = {
-        disable_splash_rendering = true;
-        mouse_move_enables_dpms = true;
-        vfr = true;
-        enable_swallow = true;
-      };
-
       input = {
         kb_layout = "cz";
         follow_mouse = 1;
@@ -77,7 +29,6 @@ in {
       };
 
       dwindle = {
-        no_gaps_when_only = false;
         pseudotile = true;
         preserve_split = true;
       };

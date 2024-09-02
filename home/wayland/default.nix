@@ -1,1 +1,1 @@
-_: { imports = [ ./hyprland ]; }
+_: { imports = [ ./hyprland ./dconf.nix ]; }

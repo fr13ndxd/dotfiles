@@ -6,11 +6,11 @@
     # nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     # nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     # nixpkgs-staging.url = "nixpkgs/staging-next"; # for latest zed-editor
-    # nixpkgs-master.url = "nixpkgs/master";
+    nixpkgs-master.url = "nixpkgs/master";
 
     binary-ninja = {
       url = "github:jchv/nix-binary-ninja";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     wezterm-flake.url = "github:wez/wezterm/main?dir=nix";
@@ -32,10 +32,7 @@
     ags.url = "github:Aylur/ags";
 
     zig.url = "github:mitchellh/zig-overlay";
-    zls-master = {
-      url = "github:zigtools/zls";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    zls-master = { url = "github:zigtools/zls"; };
 
     status-bar.url = "github:fr13ndxd/status-bar";
 
@@ -46,8 +43,8 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, home-manager, catppuccin, zls-master, zig, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, catppuccin, zls-master, zig
+    , binary-ninja, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -65,13 +62,6 @@
           ];
         };
       };
-      # homeConfigurations = {
-      #   fr13nd = home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     extraSpecialArgs = { inherit inputs; };
-      #     modules = [ ./home/home.nix ];
-      #   };
-      # };
 
       nixpkgs.config.allowUnfree = true;
     };

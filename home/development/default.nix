@@ -1,24 +1,23 @@
 { pkgs, ags, inputs, ... }: {
   imports = [ ./lazygit.nix ];
-  home.packages = with pkgs;
-    with nodePackages_latest; [
-      # debugger
-      gdb
+  home.packages = with pkgs; [
+    # debugger
+    gdb
 
-      # zig
-      pkgs.zigpkgs.master
+    # zig
+    pkgs.zigpkgs.master
 
-      # Nixfmt
-      nixfmt-classic
+    # Nixfmt
+    nixfmt-classic
 
-      # langs
-      nodejs
-      go
-      typescript
-      meson
-      ninja
-      eslint
-      gnumake
-      cmake
-    ];
+    # langs
+    nodejs
+    go
+    typescript
+    meson
+    ninja
+    eslint
+    gnumake
+    cmake
+  ];
 }

@@ -1,18 +1,15 @@
-{ pkgs, ags, inputs, ... }: {
-  home.packages = with pkgs; [
-    (pkgs.buildFHSUserEnv {
-      name = "binaryninja";
-      #targetPkgs = [inputs.binary-ninja];
-      runScript =
-        "${inputs.binary-ninja.packages.${system}.default}/bin/binaryninja";
-    })
-  ];
+{ pkgs, ags, inputs, ... }:
+let
+  binary-ninja-free =
+    inputs.binary-ninja.packages.${pkgs.system}.binary-ninja-free-wayland;
+in {
+  home.packages = [ binary-ninja-free ];
   home.file.".local/share/applications/binaryninja.desktop".text = ''
     [Desktop Entry]
     Type=Application
     Name=Binary Ninja
     Comment=Reverse engineering platform
-    Exec=binaryninja
+    Exec=${binary-ninja-free}/bin/binaryninja
     Icon=binaryninja
     Terminal=false
     Categories=Development;Utility;
