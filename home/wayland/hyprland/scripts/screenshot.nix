@@ -7,8 +7,8 @@ let
   hyprpicker = "${pkgs.hyprpicker}/bin/hyprpicker";
   swappy = "${pkgs.swappy}/bin/swappy";
   wl-copy = "${pkgs.wl-clipboard}/bin/wl-copy";
-in pkgs.writeScriptBin "screenshot" ''
-  #!${nu}
+in pkgs.writers.writeNu "screenshot" # nu
+''
   use std
 
   let SCREENSHOTS = $"($env.HOME)/Pictures/Screenshots"

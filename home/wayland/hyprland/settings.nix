@@ -40,8 +40,10 @@
       enabled = true;
       # bezier = "animationuwu,  0.99, 1, 0, 0 ";
       bezier = "animationuwu, 0.16, 1, 0.3, 1";
-      animation =
-        [ "windows, 1,5, animationuwu" "windowsOut, 1, 7, default, popin 80%" ];
+      animation = [
+        "windows, 1,5, animationuwu"
+        "windowsOut, 1, 10, default, popin 80%"
+      ];
     };
 
     general = {

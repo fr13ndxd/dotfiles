@@ -1,16 +1,18 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   programs.helix = {
     enable = true;
+    package = inputs.helix-master.packages.${pkgs.system}.default;
     settings = {
       theme = "catppuccin_mocha";
       editor = {
-        mouse = false;
+        # mouse = false;
         line-number = "relative";
         cursorline = true;
         scrolloff = 5;
         color-modes = true;
         idle-timeout = 1;
         true-color = true;
+        rainbow-brackets = true; # ##
         bufferline = "always";
         rulers = [ 100 ];
         popup-border = "all";
@@ -22,18 +24,22 @@
           select = "underline";
         };
 
+        sticky-context = {
+          enable = true;
+          indicator = false;
+        };
+
         lsp = {
           display-messages = true;
           display-inlay-hints = false;
         };
 
+        inline-diagnostics = {
+          cursor-line = "hint";
+          other-lines = "disable";
+        };
+
         whitespace.render = "none";
-        # whitespace.characters = {
-        #   space = "·";
-        #   nbsp = "⍽";
-        #   tab = "→";
-        #   newline = "⤶";
-        # };
 
         gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
         statusline = {
@@ -64,7 +70,7 @@
 
         indent-guides = {
           render = true;
-          # rainbow-option = "normal";
+          rainbow-option = "none";
         };
       };
 

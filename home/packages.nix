@@ -9,6 +9,8 @@
       gtk4-layer-shell
       pkg-config
 
+      cava
+
       (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
       ghidra
       accountsservice

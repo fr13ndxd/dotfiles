@@ -6,7 +6,7 @@ let
   pactl = "${pkgs.pulseaudio}/bin/pactl";
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};
   brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  screenshot = "${import ./scripts/screenshot.nix pkgs}/bin/screenshot";
+  screenshot = "${import ./scripts/screenshot.nix pkgs}";
 in {
   imports = [
     ./statusbar/ags.nix
@@ -62,8 +62,8 @@ in {
         "CTRL SHIFT, R,         ${e}  quit; ags -b hypr"
         "CTRL SHIFT, R,         exec, pkill status-bar; status-bar"
         "SUPER, D,              ${e}  -t launcher"
-        ",Print,         exec, ${nu} ${screenshot}"
-        "SHIFT,Print,    exec, ${nu} ${screenshot} -f"
+        ",Print,         exec,  ${screenshot}"
+        "SHIFT,Print,    exec,  ${screenshot} -f"
         "CTRL SHIFT,Print,      ${e}  -r 'recorder.start()'"
         "SUPER, Return, exec, wezterm"
         "SUPER,E, exec, nautilus -w"
