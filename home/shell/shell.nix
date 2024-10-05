@@ -21,24 +21,6 @@ in {
       userEmail = email;
       userName = name;
     };
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      shellAliases = {
-        "ls" = "ls -A --color=auto";
-        "mkcd" =
-          ''function mkcd_func() { mkdir -p "$1" && cd "$1" }; mkcd_func'';
-      };
-      syntaxHighlighting.enable = true;
-      initExtra = ''
-        SHELL=${pkgs.zsh}/bin/zsh
-        zstyle ':completion:*' menu select
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
-        unsetopt BEEP
-      '';
-    };
 
     nushell = {
       enable = true;
@@ -86,9 +68,20 @@ in {
         builtins.foldl' (prev: str: ''
           ${prev}
           ${str}'') "" (map (name: completion name) names);
+        # nu
       in ''
         $env.config = ${conf};
         ${completions [ "cargo" "git" "nix" "npm" "poetry" "curl" ]}
+
+        # --env needed, else cd wont change directory
+        def --env mkcd [path?] {
+          if $path == null {
+            print "usage: mkcd <path>"
+          } else {
+            mkdir $path
+            cd $path
+          }
+        }
 
         alias pueue = ${pkgs.pueue}/bin/pueue
         alias pueued = ${pkgs.pueue}/bin/pueued

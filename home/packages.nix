@@ -8,11 +8,18 @@
       gtk4
       gtk4-layer-shell
       pkg-config
+      hyprlock
 
       cava
+      raylib
+      tor-browser
 
       (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
-      ghidra
+      binsider
+      imhex
+      hexxy
+
+      # ghidra
       accountsservice
       spotube
       spicetify-cli

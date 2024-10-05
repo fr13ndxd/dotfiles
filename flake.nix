@@ -6,9 +6,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     # nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     # nixpkgs-stable.url = "nixpkgs/nixos-24.05";
-    # nixpkgs-staging.url = "nixpkgs/staging-next"; # for latest zed-editor
+    # nixpkgs-staging.url = "nixpkgs/staging-next";
     nixpkgs-master.url = "nixpkgs/master";
 
+    # hyprland
     ags.url = "github:Aylur/ags";
     status-bar.url = "github:fr13ndxd/status-bar";
 
@@ -20,6 +21,10 @@
     helix-master = {
       url = "github:SoraTenshi/helix/new-daily-driver";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland";
     };
 
     catppuccin.url = "github:catppuccin/nix";

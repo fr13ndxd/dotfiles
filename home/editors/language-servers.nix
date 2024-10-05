@@ -7,5 +7,8 @@
 
     # javascript, typescript
     typescript-language-server
+
+    # c#
+    omnisharp-roslyn
   ];
 }

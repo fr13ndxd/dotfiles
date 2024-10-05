@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # debugger
     gdb
+    ltrace
 
     # zig
     pkgs.zigpkgs.master

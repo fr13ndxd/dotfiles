@@ -4,7 +4,7 @@
     settings = {
       gui = {
         nerdFontsVersion = "3";
-        border = "rounded"; # else "single";
+        border = "rounded";
         showBottomLine = false;
       };
     };

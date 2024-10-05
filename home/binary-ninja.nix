@@ -1,4 +1,4 @@
-{ pkgs, ags, inputs, ... }:
+{ pkgs, inputs, ... }:
 let
   binary-ninja-free =
     inputs.binary-ninja.packages.${pkgs.system}.binary-ninja-free-wayland;

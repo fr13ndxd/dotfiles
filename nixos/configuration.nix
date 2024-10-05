@@ -11,7 +11,9 @@ in {
 
     ./hyprland.nix
   ];
-
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  # hardware.pulseaudio.enable32Bit = true;
   home-manager = {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
@@ -26,6 +28,7 @@ in {
         ../home/wayland
         ../home/wezterm
         ../home/cli-tools
+        # ../home/firefox
 
         ../home/fonts.nix
 
@@ -152,6 +155,7 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  programs.sniffnet.enable = true;
 
   users.users.fr13nd = {
     isNormalUser = true;

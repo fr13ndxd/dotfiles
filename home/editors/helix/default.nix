@@ -5,14 +5,13 @@
     settings = {
       theme = "catppuccin_mocha";
       editor = {
-        # mouse = false;
         line-number = "relative";
         cursorline = true;
         scrolloff = 5;
         color-modes = true;
         idle-timeout = 1;
         true-color = true;
-        rainbow-brackets = true; # ##
+        rainbow-brackets = true;
         bufferline = "always";
         rulers = [ 100 ];
         popup-border = "all";
@@ -39,7 +38,10 @@
           other-lines = "disable";
         };
 
-        whitespace.render = "none";
+        whitespace = {
+          render.space = "all";
+          whitespace.characters.space = "·";
+        };
 
         gutters = [ "diagnostics" "line-numbers" "spacer" "diff" ];
         statusline = {
@@ -81,7 +83,7 @@
 
       keys.normal = {
         "y" = ":clipboard-yank";
-        "p" = ":clipboard-paste-before";
+        "p" = ":clipboard-paste-replace";
         "C-k" = "hover"; # show documentation for item under cursor (ctrl + k)
         "F1" = "command_palette";
         "C-f" = "file_picker";
@@ -94,10 +96,23 @@
 
       keys.normal."\\" = { "t" = [ ":vs ~/todo.md" ]; };
     };
-    languages.language = [{
-      name = "nix";
-      auto-format = true;
-      formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-    }];
+    languages = {
+      language-server.cc-ls = { command = "${pkgs.ccls}/bin/ccls"; };
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+        }
+        {
+          name = "c";
+          language-servers = [ "cc-ls" ];
+        }
+        {
+          name = "c-sharp";
+          formatter.command = "${pkgs.csharpier}/bin/nixfmt";
+        }
+      ];
+    };
   };
 }
