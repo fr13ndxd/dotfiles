@@ -8,8 +8,14 @@
     # zig
     pkgs.zigpkgs.master
 
+    zon2nix
+
     # Nixfmt
     nixfmt-classic
+
+    # C
+    clang-tools
+    clang
 
     # langs
     nodejs

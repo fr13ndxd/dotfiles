@@ -21,7 +21,7 @@ in {
       ",Print,         exec,  ${screenshot}"
       "SHIFT,Print,    exec,  ${screenshot} -f"
       "CTRL SHIFT,Print,      ${e}  -r 'recorder.start()'"
-      "SUPER, Return, exec, wezterm"
+      "SUPER, Return, exec, kitty"
       "SUPER,E, exec, nautilus -w"
 
       "SUPER,Q, killactive"

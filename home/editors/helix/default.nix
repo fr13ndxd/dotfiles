@@ -97,22 +97,11 @@
       keys.normal."\\" = { "t" = [ ":vs ~/todo.md" ]; };
     };
     languages = {
-      language-server.cc-ls = { command = "${pkgs.ccls}/bin/ccls"; };
-      language = [
-        {
-          name = "nix";
-          auto-format = true;
-          formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
-        }
-        {
-          name = "c";
-          language-servers = [ "cc-ls" ];
-        }
-        {
-          name = "c-sharp";
-          formatter.command = "${pkgs.csharpier}/bin/nixfmt";
-        }
-      ];
+      language = [{
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt-classic}/bin/nixfmt";
+      }];
     };
   };
 }

@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     exec-once = [
       "gsettings set org.gnome.desktop.interface cursor-theme 'catppuccin-mocha-dark-cursors'"
-      "status-bar"
+      # "status-bar"
       "ags -b hypr"
     ];
 

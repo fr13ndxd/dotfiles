@@ -27,6 +27,7 @@ in {
         ../home/editors
         ../home/wayland
         ../home/wezterm
+        ../home/kitty
         ../home/cli-tools
         # ../home/firefox
 
@@ -155,7 +156,7 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  programs.sniffnet.enable = true;
+  services.ollama.enable = true;
 
   users.users.fr13nd = {
     isNormalUser = true;
@@ -164,8 +165,8 @@ in {
     packages = with pkgs; [
       firefox
       brave
-      wineWowPackages.stable
-      winetricks
+      # wineWowPackages.stable
+      # winetricks
       spotify
       gnomeExtensions.mute-spotify-ads
       gnome-extension-manager
@@ -177,7 +178,6 @@ in {
 
   nixpkgs.config = { allowUnfree = true; };
   environment.systemPackages = with pkgs; [
-    gcc
     clang
     pkgs.zigpkgs.master
     inputs.zls-master.packages.${system}.default
@@ -189,6 +189,8 @@ in {
     accountsservice
 
     direnv
+
+    qemu
 
     networkmanager
   ];

@@ -1,10 +1,11 @@
 { pkgs, inputs, ... }: {
   programs.wezterm = {
     enable = true;
+    package = pkgs.wezterm;
     extraConfig = ''
       return {
-        -- enable_wayland = false,
-        -- front_end = "WebGpu",
+         enable_wayland = false,
+         front_end = "WebGpu",
 
         color_scheme = "Catppuccin Mocha",
         font = require("wezterm").font("CaskaydiaCoveNF"),
@@ -31,6 +32,7 @@
         text_background_opacity = 1.0;
       }
     '';
-    package = inputs.wezterm-flake.packages.${pkgs.system}.default;
+    # package = inputs.wezterm-flake.packages.${pkgs.system}.default;
+    #package = inputs.nixpkgs-stable.legacyPackages."${pkgs.hostPlatform.system}".wezterm;
   };
 }

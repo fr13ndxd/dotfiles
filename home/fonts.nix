@@ -12,11 +12,11 @@ let
     ];
   });
 
-  font = {
-    name = "Ubuntu Nerd Font";
-    package = nerdfonts;
-    size = 9;
-  };
+  # font = {
+  #   name = "Ubuntu Nerd Font";
+  #   package = nerdfonts;
+  #   size = 9;
+  # };
 
   iconTheme = {
     name = "MoreWaita";
@@ -34,7 +34,13 @@ in {
     };
   };
 
-  gtk = { inherit font; };
+  gtk = {
+    font = {
+      name = "Ubuntu Nerd Font";
+      package = nerdfonts;
+      size = 9;
+    };
+  };
 
   home.packages = [ nerdfonts ];
 }

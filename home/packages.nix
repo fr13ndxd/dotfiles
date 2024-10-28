@@ -5,6 +5,14 @@
       gnome-tweaks
       vesktop
 
+      lutris
+
+      inputs.smallfetch.packages.${pkgs.system}.default
+
+      inputs.status-bar.packages.${pkgs.system}.default
+
+      jetbrains.clion
+
       gtk4
       gtk4-layer-shell
       pkg-config
@@ -14,10 +22,12 @@
       raylib
       tor-browser
 
-      (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
+      # (cutter.withPlugins (ps: with ps; [ jsdec rz-ghidra sigdb ]))
       binsider
       imhex
       hexxy
+
+      qemu
 
       # ghidra
       accountsservice

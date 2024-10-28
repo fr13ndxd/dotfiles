@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 let
   lang = icon: color: {
     symbol = icon;
@@ -24,6 +24,8 @@ in {
 
     nushell = {
       enable = true;
+      package =
+        inputs.nixpkgs-stable.legacyPackages."${pkgs.hostPlatform.system}".nushell;
       environmentVariables = { SHELL = ''"${pkgs.nushell}/bin/nu"''; };
       extraConfig = let
         conf = builtins.toJSON {

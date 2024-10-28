@@ -5,7 +5,7 @@
     # nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
     # nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
-    # nixpkgs-stable.url = "nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "nixpkgs/nixos-24.05";
     # nixpkgs-staging.url = "nixpkgs/staging-next";
     nixpkgs-master.url = "nixpkgs/master";
 
@@ -13,10 +13,12 @@
     ags.url = "github:Aylur/ags";
     status-bar.url = "github:fr13ndxd/status-bar";
 
+    smallfetch.url = "github:fr13ndxd/smallfetch";
+
     binary-ninja.url = "github:jchv/nix-binary-ninja";
     wezterm-flake = {
       url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #  inputs.nixpkgs.follows = "nixpkgs";
     };
     helix-master = {
       url = "github:SoraTenshi/helix/new-daily-driver";

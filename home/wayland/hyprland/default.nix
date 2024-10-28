@@ -21,7 +21,7 @@ in {
     package = hyprland;
     systemd.enable = true;
     xwayland.enable = true;
-    plugins = [ inputs.hyprgrass.packages.${pkgs.system}.default ];
+    # plugins = [ inputs.hyprgrass.packages.${pkgs.system}.default ];
 
     settings = {
       input = {

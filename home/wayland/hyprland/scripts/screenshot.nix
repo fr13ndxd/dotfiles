@@ -24,8 +24,8 @@ in pkgs.writers.writeNu "screenshot" # nu
       bash -c  "${hyprpicker} -rz &"
       sleep 200ms    
       let RESULT = $"(${slurp} -w 0)"
-      pkill hyprpicker
       ${wayshot} -s $"($RESULT)" -c -f $target
+      pkill hyprpicker
     }
 
     if ($target | path exists) {
